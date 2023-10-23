@@ -1,3 +1,12 @@
+
+/* Navbar */
+#mainNav{
+    background-color: #ffff;
+}
+/* masthead */
+.masthead{
+    margin-top: 10%;
+}
 .nav-item{
     display: flex;
     align-items: center;
@@ -23,6 +32,52 @@
   
     margin: 0px;
 }
+/* text kategori */
+.judul-kategori{
+    font-size: 30px;
+    margin-left: 43%;
+}
+/* Text wisata populer  */
+.wisata-populer{
+    margin-left: 40%;
+    font-size: 30px;
+}
+/* carousel wisata populer */
+.carousel-control-next{
+    margin-right: 20%;
+}
 
+.carousel-control-prev{
+    margin-left: 20%;
+}
 
+.carousel-inner{
+   width: 50%;
+}
+.carousel-item{
+    height: 500px;
+    margin-left: 10%;
+}
 
+.carousel-item img{
+    height: 500px;
+    width: 200px;
+}
+
+/* carousel kuliner populer */
+
+/* text kuliner populer */
+.kuliner-populer{
+    margin-left: 40%;
+    font-size: 30px;
+}
+/* Penginapan */
+.rekomendasi-penginapan{
+    font-size: 30px;
+    margin-left: 15%;
+}
+/* judul Event */
+.judul-event{
+    font-size: 30px;
+    margin-left: 12%;
+}

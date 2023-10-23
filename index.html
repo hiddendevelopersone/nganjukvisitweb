@@ -1,170 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="stylecss/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body>
-  <nav class="navbar fixed-top navbar-expand-lg" style="  background-color: #D9D9D9;">
-    <div class="container-fluid">
-     <img src="gambar/Seal_of_Nganjuk_Regency 1.png" alt="" style="width: 70px; height: 70px; margin-left: 20px; margin-top: 12px; margin-right: 20px;">
-     <img src="gambar/Pesona-Indonesia-Logo 1.png" alt="" style="margin-right: 200px;">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        style="margin-top: 0px; background-color: white; color-scheme: #000000;"
-      >
-        <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+    <div class="container px-5">
+      <a href=""><img class="app-badge" src="gambar/Group 49.png" alt="..." /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="bi-list"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-          <li class="nav-item">
-            <a class="nav-link " href="aktivitas.html" >Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Wisata
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Kuliner
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+          <a class="nav-link " href="aktivitas.html">Home</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Wisata
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="" >Offers</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Kuliner
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </li>
+          <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Offers</a></li>
+
         </ul>
-       <a href="login.html"><button type="button" class="btn btn-primary">login admin</button>
-        </a>
-        </form>
+        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal"
+          data-bs-target="#feedbackModal">
+          <span class="d-flex align-items-center">
+            <i class="bi-chat-text-fill me-2"></i>
+            <span class="small">login admin</span>
+          </span>
+        </button>
       </div>
     </div>
   </nav>
-  <div class="container mt-5">
-    <div class="judul-kategori" style="background-color: #fff; padding: 5px 10px;">
-      <h5 class="text-center" style="margin-top: 5px;">Popular Categories</h5>
-    </div>
-    <div class="row text-center row-container">
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-        <div class="menu-kategori">
-          <a href="#"><img src="gambar/wisata.png" class="img-categori mt-3"></a>
-          <p>Wisata</p>
-        </div>
-      </div>
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-        <div class="menu-kategori">
-          <a href="#"><img src="gambar/Kuliner.png" class="img-categori mt-3"></a>
-          <p>Kuliner</p>
-        </div>
-      </div>
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-        <div class="menu-kategori">
-          <a href="#"><img src="gambar/hotel.png" class="img-categori mt-3"></a>
-          <p>Hotel</p>
-        </div>
-      </div>
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-        <div class="menu-kategori">
-          <a href="#"><img src="gambar/event.png" class="img-categori mt-3"></a>
-          <p>Event</p>
-        </div>
-      </div>
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-        <div class="menu-kategori">
-          <a href="#"><img src="gambar/shop.png" class="img-categori mt-3"></a>
-          <p>Oleh-oleh</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Awal carsoul-->
-  <div class="container">
-    <div class="judul-kategori" style="background-color: #fff; padding: 5px 10px;">
-      <h5 class="text-center" style="margin-top: 5px;">Wisata Populer</h5>
-    </div>
-  <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="gambar/sedudo.png" class="d-block img-fluid" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="gambar/bukitsurga.png" class="d-block img-fluid" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="gambar/semantok.jpg" class="d-block img-fluid" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-  <!--Akhir carsoul-->
-   <!--Awal carsoul-->
-   <div class="container">
-    <div class="judul-kategori" style="background-color: #fff; padding: 5px 10px;">
-      <h5 class="text-center" style="margin-top: 5px;">Kuliner Populer</h5>
-    </div>
-  <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="gambar/asem.png" class="d-block img-fluid" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="gambar/asem.png" class="d-block img-fluid" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="gambar/nasipecel.jpg" class="d-block img-fluid" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-  <!--Akhir carsoul-->
+  <!-- Mashead header-->
+  <header class="masthead">
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center">
+        <div class="col-lg-6">
+          <!-- Mashead text and app badges-->
+          <div class="mb-5 mb-lg-0 text-center text-lg-start">
+            <h1 class="display-1 lh-1 mb-3">VISIT NGANJUK THE WIND CITY</h1>
+            <p class="lead fw-normal text-muted mb-5">Nganjuk Explore memberikan pengalaman tak terlupakan dalam
+              menjelajahi destinasi wisata di Kabupaten Nganjuk.</p>
+            <div class="d-flex flex-column flex-lg-row align-items-center">
 
+              <a href=""><img class="app-badge" src="gambar/Mobile app store badge.png" alt="..." /></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <!-- Masthead device mockup feature-->
+
+
+          <a class="me-lg-3 mb-4 mb-lg-0"><img class="app-badge" src="gambar/Group 46.png" alt="Group"
+              style="height: 500px;" /></a>
+          <!-- <div class="screen bg-black"> -->
+          <!-- PUT CONTENTS HERE:-->
+          <!-- * * This can be a video, image, or just about anything else.-->
+          <!-- * * Set the max width of your media to 100% and the height to-->
+          <!-- * * 100% like the demo example below.-->
+          <!-- <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%"><source src="assets/img/demo-screen.mp4" type="video/mp4" /></video> -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+    
+    </div>
+    </div>
+  </div>
+  </header>
+  <div class="main-container" style="background-color: #D9D9D9; width: 80%; height: 50%; margin-left: 10rem; border-radius: 10px; ">
+  
+  
+    <div class="container mt-5">
+      <h5 class="judul-kategori">Category</h5>
+      <div class="row text-center row-container" style="margin-left: 100px; background-color: #D9D9D9;" >
+        <div class="col-lg-2 col-md-3 col-sm-4 col-5" style="background-color: #FFFFFF;">
+          <div class="menu-kategori">
+            <a href="#"><img src="gambar/wisata.png" class="img-categori mt-3"></a>
+            <p>Wisata</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-5" style="background-color: #FFFFFF;">
+          <div class="menu-kategori">
+            <a href="#"><img src="gambar/Kuliner.png" class="img-categori mt-3"></a>
+            <p>Kuliner</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-5" style="background-color: #FFFFFF;">
+          <div class="menu-kategori">
+            <a href="#"><img src="gambar/hotel.png" class="img-categori mt-3"></a>
+            <p>Hotel</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-5" style="background-color: #FFFFFF;">
+          <div class="menu-kategori">
+            <a href="#"><img src="gambar/event.png" class="img-categori mt-3"></a>
+            <p>Event</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-5" style="background-color: #FFFFFF;">
+          <div class="menu-kategori">
+            <a href="#"><img src="gambar/shop.png" class="img-categori mt-3"></a>
+            <p>Oleh-oleh</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Awal carsoul-->
+    <div class="m-5">
+      <h5 class="wisata-populer">Wisata Populer</h5>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="gambar/download.jpg" class="d-block w-75" alt="">
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block " alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="m-5">
+    <h5 class="kuliner-populer">Kuliner Populer</h5>
+  <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="gambar/download.jpg" class="d-block w-75" alt="">
+      </div>
+      <div class="carousel-item">
+        <img src="..." class="d-block " alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+    <!--Penginapan-->
+    <h5 class="rekomendasi-penginapan">Rekomendasi Penginapan</h5>
+    <div class="row row-cols-2 row-cols-md-5 g-4" style="border-radius: 20px; margin-left: 150px;">
+      <div class="col">
+        <div class="card h-200" style="border-radius: 30px">
+          <img src="gambar/nirwana hotel.png" class="card-img-top" alt="..." style="width: 100%; border-radius: 30px;">
+          <div class="card-body">
+            <h5 class="card-title">NIRWANA HOTEL</h5>
+            <p class="card-text">hsdgfkjgefkja</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100" style="border-radius: 30px">
+          <img src="gambar/nirwana hotel.png" class="card-img-top" alt="..." style="width: 100%; border-radius: 30px;">
+          <div class="card-body">
+            <h5 class="card-title">NIRWANA HOTEL</h5>
+            <p class="card-text">hsdgfkjgefkja</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100" style="border-radius: 30px">
+          <img src="gambar/nirwana hotel.png" class="card-img-top" alt="..." style="width: 100%; border-radius: 30px;">
+          <div class="card-body">
+            <h5 class="card-title">NIRWANA HOTEL</h5>
+            <p class="card-text">hsdgfkjgefkja</p>
+          </div>
+        </div>
+      </div>
+     
+     <div class="col">
+      <div class="card h-100" style="border-radius: 30px">
+        <img src="gambar/nirwana hotel.png" class="card-img-top" alt="..." style="width: 100%; border-radius: 30px;">
+        <div class="card-body">
+          <h5 class="card-title">NIRWANA HOTEL</h5>
+          <p class="card-text">hsdgfkjgefkja</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="mt-3">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-primary me-md-2" style="border-radius: 20px;" type="button">Tampilkan Lebih Banyak</button>
+    </div>
+  </div>
+    <!-- Event -->
+    <div class="m-5">
+      <h5 class="judul-event">Event</h5>
+    <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="gambar/Snapinsta.app_392755071_701742865165938_3454459829529125444_n_1080.jpg" class="d-block w-75" alt="">
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block " alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+   
+</div>
 </body>
+
 </html>
