@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+body{
+    /* background-color:#336699; */
+}
+body .img-bg{
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+.background-overlay {
+    background-color: rgba(0, 118, 177, 0.7); /* Blue color with 70% opacity */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.wrapper{
+    position: absolute;
+    margin-top: 6vh;
+    width: 100%;
+    z-index: 1;
+}
+.kontenbox{
+    width: 80% !important;
+    height: 570px;
+    border-radius: 55px;
+    padding: 6px 6px;
+}
+.row {
+    padding: 0%;
+    margin: 0%;
+    min-height: 558px;
+    background-color: #2B84DD;
+    border-radius: 51px;
+}
+.col-sm-5 {
+    padding: 0%;
+    margin: 0%;
+}
+.col-sm-7 {
+    padding: 0%;
+    margin: 0%;
+    border-top-left-radius: 48px !important;
+    border-bottom-left-radius: 48px !important;
+}
+.leftcontent{
+    margin: 70px 70px;
+}
+.leftcontent .judul{
+    font-size: 28px;
+    font-family: 'Comic Neue', cursive;
+}
+.leftcontent p{
+    color: #605E5E;
+}
+.leftcontent a{
+    font-size: 12px;
+    /* justify-content: end; */
+}
+.rightcontent{
+    color: white;
+}
+/* .rightcontent #iconlogos{
+    transform: rotate(-10deg) scale(0.9); */
+/* } */
+.rightcontent h1 {
+    font-family: 'Staatliches';
+}
+.rightcontent p{
+    margin-bottom: 0%;
+}
+.rightcontent #illus{
+    transform: scale(65%);
+    position:absolute;
+    width: 24rem;
+    margin-top: -60px;
+    margin-left: -200px;
+    margin-right: auto;
+    z-index: 1;
+    height: auto;
+}
