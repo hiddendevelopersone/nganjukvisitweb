@@ -1,14 +1,32 @@
+<?php
+session_start();
+
+if (isset($_SESSION["registersuccess"])) {
+  if($_SESSION["registersuccess"] == "0"){
+    echo "<script>alert('registrasi gagal, email atau username ini sudah terdaftar!')</script>";
+  }
+  unset($_SESSION["registersuccess"]);
+}
+if (isset($_SESSION["validator"])) {
+  if($_SESSION["validator"] == "inv_email"){
+    echo "<script>alert('email invalid')</script>";
+  }else if($_SESSION["validator"] == "inv_pwd"){
+    echo "<script>alert('invalid, password harus menggunakan kombinasi huruf besar, kecil dan angka dan minimal harus 8 karakter')</script>";
+  }
+  unset($_SESSION["validator"]);
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Register Pengelola</title>
+    <title>Register Admin</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="styleregist.css">
+    <link rel="stylesheet" href="stylecss/styleregist.css">
 
     </head>
   <body>
@@ -34,21 +52,21 @@
                   </div>
                 <div class="col-sm-8 bg-light">
                     <div class="leftcontent">
-                        <form action="" method="POST">
+                        <form action="prosesregist.php" method="POST">
                             <div class="form-group">
 
                                 <div class="d-flex justify-content-between">
                                     <div class="container pl-0 mr-2">
-                                        <label for="username">Username</label>
+                                        <label for="userusername">Username</label>
                                     </div>
                                     <div class="container pl-0">
-                                        <label for="fullname">Nama</label>
+                                        <label for="userfullname">Nama</label>
                                     </div>
                                 </div>
 
                                 <div class="d-flex">
-                                  <input type="text" class="form-control mr-2" id="username" name="username" placeholder="Masukkan username">
-                                  <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Masukkan nama">
+                                  <input type="text" class="form-control mr-2" id="userusername" name="userusername" placeholder="Masukkan username" required>
+                                  <input type="text" class="form-control" id="userfullname" name="userfullname" placeholder="Masukkan nama" required>
                                 </div>
 
                               </div>
@@ -56,32 +74,32 @@
                               <div class="form-group">
                                 <div class="d-flex justify-content-between">
                                   <div class="container pl-0 mr-2">
-                                    <label for="email">Email</label>
+                                    <label for="useremail">Email</label>
                                   </div>
                                   <div class="container pl-0">
-                                    <label for="phonenumber">No. Telepon</label>
+                                    <label for="usernotelp">No. Telepon</label>
                                   </div>
                                 </div>
                                 
                                 <div class="d-flex">
-                                  <input type="text" class="form-control mr-2" id="email" name="email" placeholder="Masukkan email">
-                                  <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Masukkan nomor telepon">
+                                  <input type="text" class="form-control mr-2" id="useremail" name="useremail" placeholder="Masukkan email" required>
+                                  <input type="text" class="form-control" id="usernotelp" name="usernotelp" placeholder="Masukkan nomor telepon" required>
                                 </div>
                               </div>
 
                               <div class="form-group">
-                                <label for="address">Alamat</label>
-                                <textarea class="form-control" id="address" name="address" placeholder="Masukkan alamat"></textarea>
+                                <label for="useralamat">Alamat</label>
+                                <textarea class="form-control" id="useralamat" name="useralamat" placeholder="Masukkan alamat" required></textarea>
                               </div>
                                     
                             <div class="form-group mb-4">
-                              <label for="password">Password</label>
-                              <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
+                              <label for="userpwd">Password</label>
+                              <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Masukkan password" required>
                             </div>
                             
                             <div class="container pr-0">
                               <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary align-items-right">Daftar</button>
+                                <button type="submit" class="btn btn-primary align-items-right" name="daftar">Daftar</button>
                               </div>
                             </div>
                           

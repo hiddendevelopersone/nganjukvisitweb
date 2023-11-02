@@ -5,6 +5,12 @@ if(isset($_SESSION["loginundefined"])) {
   echo "<script>alert('email atau password tidak cocok')</script>";
   unset($_SESSION["loginundefined"]);
 }
+if(isset($_SESSION["registersuccess"])) {
+  if($_SESSION["registersuccess"] = "1") {
+    echo "<script>alert('akun anda berhasil dibuat, wkwwkwk')</script>";
+  }
+  unset($_SESSION["registersuccess"]);
+}
 ?>
 
 <!doctype html>
@@ -17,7 +23,7 @@ if(isset($_SESSION["loginundefined"])) {
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="stylelogin.css">
+    <link rel="stylesheet" href="stylecss/stylelogin.css">
 
     </head>
   <body>
@@ -33,13 +39,13 @@ if(isset($_SESSION["loginundefined"])) {
                         <form action="proseslogin.php" method="POST">
                             <div class="form-group">
                               <label for="useremail">Email</label>
-                              <input type="text" class="form-control" id="useremail" name="useremail" placeholder="Enter email">
+                              <input type="text" class="form-control" id="useremail" name="useremail" placeholder="Enter email" required>
                             </div>
                             <div class="form-group mb-4">
                               <label for="userpwd">Password</label>
-                              <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Enter Password">
+                              <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Enter Password" required>
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Login</button>
+                            <button type="submit" class="btn btn-primary mr-2" name="login">Login</button>
                             <a href="registernew.php">
                               <div class="btn btn-outline-primary">sign up</div>
                             </a>
