@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <title>Focus - Bootstrap Admin Dashb</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
     <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
     <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/label.css">
 
 
 
@@ -42,19 +43,7 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="./images/logo.png" alt="">
-                <img class="logo-compact" src="./images/logo-text.png" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">
-            </a>
-
-            <div class="nav-control">
-                <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
-                </div>
-            </div>
-        </div>
+        <?php include("navheader.php");?>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -168,138 +157,11 @@
             Header end ti-comment-alt
         ***********************************-->
 
-        <!--**********************************
+        <!-- @include('sidebar.php'); -->
+                <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="quixnav">
-            <div class="quixnav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Main Menu</li>
-                    <li><a href="./index.html" aria-expanded="false"><i class="icon icon-single-04"></i><span
-                        class="nav-text">Dashboard</span></a></li>
-                    <!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">Dashboard 1</a></li>
-                            <li><a href="./index2.html">Dashboard 2</a></li>
-                        </ul>
-                    </li> -->
-                    <li class="nav-label">Data</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-app-store"></i><span class="nav-text">Data</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./app-profile.html">Pengguna</a></li>
-                            <!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">Compose</a></li>
-                                    <li><a href="./email-inbox.html">Inbox</a></li>
-                                    <li><a href="./email-read.html">Read</a></li>
-                                </ul>
-                            </li> -->
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Informasi</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="informasi-wisata.html">Wisata</a></li>
-                                    <li><a href=" ">Event</a></li>
-                                    <li><a href=" ">Penginapan</a></li>
-                                    <li><a href=" ">Kuliner</a></li>
-                                </ul>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./chart-flot.html">Flot</a></li>
-                            <li><a href="./chart-morris.html">Morris</a></li>
-                            <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="./chart-chartist.html">Chartist</a></li>
-                            <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="./chart-peity.html">Peity</a></li>
-                        </ul>
-                    </li> -->
-                    <li class="nav-label">Aplikasi</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-world-2"></i><span class="nav-text">Aplikasi</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./app-calender.html">Kalendar</a></li>
-                            <!-- <li><a href="./ui-accordion.html">Accordion</a></li>
-                            <li><a href="./ui-alert.html">Alert</a></li>
-                            <li><a href="./ui-badge.html">Badge</a></li>
-                            <li><a href="./ui-button.html">Button</a></li>
-                            <li><a href="./ui-modal.html">Modal</a></li>
-                            <li><a href="./ui-button-group.html">Button Group</a></li>
-                            <li><a href="./ui-list-group.html">List Group</a></li>
-                            <li><a href="./ui-media-object.html">Media Object</a></li>
-                            <li><a href="./ui-card.html">Cards</a></li>
-                            <li><a href="./ui-carousel.html">Carousel</a></li>
-                            <li><a href="./ui-dropdown.html">Dropdown</a></li>
-                            <li><a href="./ui-popover.html">Popover</a></li>
-                            <li><a href="./ui-progressbar.html">Progressbar</a></li>
-                            <li><a href="./ui-tab.html">Tab</a></li>
-                            <li><a href="./ui-typography.html">Typography</a></li>
-                            <li><a href="./ui-pagination.html">Pagination</a></li>
-                            <li><a href="./ui-grid.html">Grid</a></li> -->
-
-                        </ul>
-                    </li>
-
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-plug"></i><span class="nav-text">Plugins</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./uc-select2.html">Select 2</a></li>
-                            <li><a href="./uc-nestable.html">Nestedable</a></li>
-                            <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                            <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                            <li><a href="./uc-toastr.html">Toastr</a></li>
-                            <li><a href="./map-jqvmap.html">Jqv Map</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="widget-basic.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
-                                class="nav-text">Widget</span></a></li>
-                    <li class="nav-label">Forms</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-form"></i><span class="nav-text">Forms</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./form-element.html">Form Elements</a></li>
-                            <li><a href="./form-wizard.html">Wizard</a></li>
-                            <li><a href="./form-editor-summernote.html">Summernote</a></li>
-                            <li><a href="form-pickers.html">Pickers</a></li>
-                            <li><a href="form-validation-jquery.html">Jquery Validate</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Table</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-layout-25"></i><span class="nav-text">Table</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
-                            <li><a href="table-datatable-basic.html">Datatable</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-label">Extra</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-copy-06"></i><span class="nav-text">Pages</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./page-register.html">Register</a></li>
-                            <li><a href="./page-login.html">Login</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./page-error-400.html">Error 400</a></li>
-                                    <li><a href="./page-error-403.html">Error 403</a></li>
-                                    <li><a href="./page-error-404.html">Error 404</a></li>
-                                    <li><a href="./page-error-500.html">Error 500</a></li>
-                                    <li><a href="./page-error-503.html">Error 503</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./page-lock-screen.html">Lock Screen</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-
-        </div>
+        <?php include("sidebar.php");?>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -315,7 +177,7 @@
                         <div class="card">
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
-                                    <div class="stat-text">Today Expenses </div>
+                                    <div class="judul-text">Jumlah Data Wisata</div>
                                     <div class="stat-digit"> <i class="fa fa-usd"></i>8500</div>
                                 </div>
                                 <div class="progress">
@@ -328,7 +190,7 @@
                         <div class="card">
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
-                                    <div class="stat-text">Income Detail</div>
+                                    <div class="judul-text">Jumlah Data Kuliner</div>
                                     <div class="stat-digit"> <i class="fa fa-usd"></i>7800</div>
                                 </div>
                                 <div class="progress">
@@ -341,7 +203,7 @@
                         <div class="card">
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
-                                    <div class="stat-text">Task Completed</div>
+                                    <div class="judul-text">Jumlah Data Penginapan</div>
                                     <div class="stat-digit"> <i class="fa fa-usd"></i> 500</div>
                                 </div>
                                 <div class="progress">
@@ -354,7 +216,7 @@
                         <div class="card">
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
-                                    <div class="stat-text">Task Completed</div>
+                                    <div class="judul-text">Jumlah Data Event</div>
                                     <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
                                 </div>
                                 <div class="progress">
@@ -554,10 +416,14 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Country</h4>
+                                <h4 class="card-title">Peta</h4>
                             </div>
                             <div class="card-body">
-                                <div id="vmap13" class="vmap"></div>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253096.35950745232!2d111.78245695484192!3d-7.615110864478897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e784be1466228d1%3A0x3027a76e352bdc0!2sKabupaten%20Nganjuk%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1699187134161!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            
+                                <!-- <div id="vmap13" class="vmap"></div> -->
                             </div>
                         </div>
                     </div>
