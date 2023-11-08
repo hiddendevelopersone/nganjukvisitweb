@@ -50,7 +50,7 @@ while($row = mysqli_fetch_assoc($result)){
                 <td><?= $lastresult["linkmaps"];?></td>
                 <td>
                   <div class="d-inline-flex">
-                    <a href="/event/detail_event.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
+                    <a href="../utility/delete.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
                     <div class="btn btn-primary mr-1">Edit</div></a>
                     <div class="btn btn-danger">Hapus</div>
                   </div>

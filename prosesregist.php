@@ -23,6 +23,26 @@ function validatePassword($password) {
         return false;
     }
 }
+function validateUsername($username) {
+    $minLength = 6;
+    $maxLength = 20;
+    
+    if (strlen($username) >= $minLength && strlen($username) <= $maxLength) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function validateFullname($fullname) {
+    $minLength = 2;
+    $maxLength = 50;
+
+    if (strlen($fullname) >= $minLength && strlen($fullname) <= $maxLength) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){                    // untuk menendang pengguna
     echo "NOT FOUND 404, you mean register.php ?";
@@ -43,12 +63,12 @@ if(isset($_POST["daftar"])){
     $kodee = $huruf . $urutan;
     
     global $conn;
-    $username = $_POST["userusername"];
+    $username = htmlspecialchars($_POST["userusername"]);
     $password = $_POST["userpwd"];
-    $email = $_POST["useremail"]; 
-    $fullname = $_POST["userfullname"];
-    $alamat = $_POST["useralamat"];
-    $notelp = $_POST["usernotelp"];
+    $email = htmlspecialchars($_POST["useremail"]); 
+    $fullname = htmlspecialchars($_POST["userfullname"]);
+    $alamat = htmlspecialchars($_POST["useralamat"]);
+    $notelp = htmlspecialchars($_POST["usernotelp"]);
     
     // password encrypt
     $epassword = password_hash($password, PASSWORD_BCRYPT);
@@ -67,8 +87,18 @@ if(isset($_POST["daftar"])){
             echo "<script>window.history.back();</script>";
             exit();
         }
-        else if(!validatePassword($password)){
+        else if(!validatePassword($password)) {
             $_SESSION["validator"] = "inv_pwd"; 
+            echo "<script>window.history.back();</script>";
+            exit();    
+        }
+        else if(!validateUsername($username)) {
+            $_SESSION["validator"] = "inv_usrname";
+            echo "<script>window.history.back();</script>";
+            exit();    
+        }
+        else if(!validateFullname($fullname)) {
+            $_SESSION["validator"] = "inv_fullname";
             echo "<script>window.history.back();</script>";
             exit();    
         }

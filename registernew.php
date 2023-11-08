@@ -12,6 +12,10 @@ if (isset($_SESSION["validator"])) {
     echo "<script>alert('email invalid')</script>";
   }else if($_SESSION["validator"] == "inv_pwd"){
     echo "<script>alert('invalid, password harus menggunakan kombinasi huruf besar, kecil dan angka dan minimal harus 8 karakter')</script>";
+  }else if($_SESSION["validator"] == "inv_usrname"){
+    echo "<script>alert('invalid, username minimal harus 6 karakter maksimal 20 karakter')</script>";
+  }else if($_SESSION["validator"] == "inv_fullname"){
+    echo "<script>alert('invalid, username minimal harus 2 karakter maksimal 50 karakter')</script>";
   }
   unset($_SESSION["validator"]);
 }

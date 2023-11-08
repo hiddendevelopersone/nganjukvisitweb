@@ -2,17 +2,11 @@
 
 require "koneksi.php";
 
-$rowresult = [];
-
-$sqlquery = "SELECT * FROM informasi_wisata";
+$sqlquery = "SELECT * FROM `informasi_penginapan`";
 
 $result = mysqli_query($conn, $sqlquery);
 
 $response = array("status"=>"success", "message"=>"data diambil", "data"=>$result->fetch_all(MYSQLI_ASSOC));
-
-// while($row = mysqli_fetch_assoc($result)){
-//     $rowresult[] = $row;
-// }
 
 $conn->close();
 
