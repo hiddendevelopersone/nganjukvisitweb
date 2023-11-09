@@ -1,3 +1,39 @@
+<?php
+include('../koneksi.php');
+
+$sqlquery = "SELECT * FROM informasi_penginapan";
+$result = $conn->query($sqlquery);
+
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+}
+$nama_penginapan = "";
+$lokasi = "";
+$deskripsi = "";
+$error;
+$success;
+if (isset($_POST['simpan'])) {
+    $nama_penginapan = $_POST['nama_penginapan'];
+    $lokasi = $_POST['lokasi'];
+    $deskripsi = $_POST['deskripsi'];
+
+        if ($nama_penginapan && $lokasi && $deskripsi) {
+        $sql1 = "insert into informasi_penginapan(nama_penginapan,lokasi,id_wisata,deskripsi) values ('$nama_penginapan','$lokasi','2','$deskripsi')";
+        $q1 = mysqli_query($conn, $sql1);
+        if ($q1) {
+            $sukses = "Berhasil memasukan data baru";
+            echo "<script>alert('Berhasil memasukan data baru')</script>";
+        } else {
+            $error = "Gagal memasukan data";
+            echo "<script>alert('Gagal memasukkan data')</script>";
+        }
+    } else {
+        $error = "Silahkan masukan semua data";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -165,27 +201,28 @@
         ***********************************-->
         <div class="content-body">
             <div class="container">
-            <div class="mb-3" >
-                    <label for="exampleFormControlInput1" class="form-label" >Nama Penginapan</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Penginapan" >
-                  </div>
-                  <div class="mb-3">
+            <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+              
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nama Penginapan</label>
+                <input type="text" class="form-control" id="nama_penginapan" placeholder="Masukan Nama Penginapan" name="nama_penginapan">
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Lokasi">
-                  </div>
-                  <!-- <div class="mb-3 ">
-                    <label for="exampleFormControlInput1" class="form-label">Tempat Wisata Terdekat</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Tempat Wisata Terdekat">
-                  </div> -->
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-                  <div class="mb-3">
+                    <input type="text" class="form-control" id="lokasi" placeholder="Masukan Lokasi" name="lokasi">
+                </div>
+                <div class="mb-3">
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                </div>
+                <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>
                     <input class="form-control" type="file" id="formFile">
-                  </div>
-                  <button type="submit" class="btn btn-primary">SIMPAN</button>
+                </div>
+                <div class="col-12">
+                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                </div>
+                </form>
             </div>
         </div>
         

@@ -1,3 +1,46 @@
+<?php
+include('../koneksi.php');
+
+$sqlquery = "SELECT * FROM event";
+$result = $conn->query($sqlquery);
+
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+}
+$nama_event = "";
+$status = "";
+$jadwal = "";
+$lokasi = "";
+$deskripsi = "";
+$hari = "";
+$error;
+$success;
+if (isset($_POST['simpan'])) {
+    $nama_event = $_POST['nama_event'];
+    $status = $_POST['status'];
+    $jadwal = $_POST['jadwal'];
+    $lokasi = $_POST['lokasi'];
+    $deskripsi = $_POST['deskripsi'];
+    $hari = $_POST['hari'];
+
+        if ($nama_event && $status && $jadwal && $lokasi && $deskripsi && $hari) {
+        $sql1 = "insert into event(nama_event,status,jadwal,lokasi,deskripsi,id_wisata,hari) values ('$nama_event','$status','$jadwal','$lokasi','$deskripsi','2','$hari')";
+        $q1 = mysqli_query($conn, $sql1);
+        if ($q1) {
+            $sukses = "Berhasil memasukan data baru";
+            echo "<script>alert('Berhasil memasukan data baru')</script>";
+        } else {
+            $error = "Gagal memasukan data";
+            echo "<script>alert('Gagal memasukkan data')</script>";
+        }
+    } else {
+        $error = "Silahkan masukan semua data";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -165,37 +208,40 @@
         ***********************************-->
         <div class="content-body">
             <div class="container">
-            <div class="mb-3" >
-                    <label for="exampleFormControlInput1" class="form-label" >Nama Event</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Event" >
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Lokasi">
-                  </div>
-                  <div class="row">
-                  <div class="mb-3 col-md-4">
-                    <label for="exampleFormControlInput1" class="form-label">Jadwal Event</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Jadwal Event">
-                  </div>
-                  <div class="mb-3 col-md-4">
-                    <label for="exampleFormControlInput1" class="form-label">Hari</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Hari">
-                  </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Status</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Status">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile">
-                  </div>
-                  <button type="submit" class="btn btn-primary">SIMPAN</button>
+            <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+              
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nama Event</label>
+              <input type="text" class="form-control" id="nama_event" placeholder="Masukan Nama Event" name="nama_event">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Status</label>
+                  <input type="text" class="form-control" id="status" placeholder="Masukan Status" name="status">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Jadwal</label>
+                  <input type="date" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
+                  <input type="text" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal">
+              </div>
+              <div class="mb-3">
+                  <label for="deskripsi" class="form-label">Deskripsi</label>
+                  <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Hari</label>
+                  <input type="text" class="form-control" id="hari" placeholder="Masukan Hari" name="hari">
+              </div>
+              <div class="mb-3">
+                  <label for="formFile" class="form-label">Default file input example</label>
+                  <input class="form-control" type="file" id="formFile">
+              </div>
+              <div class="col-12">
+                  <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+              </div>
+              </form>
             </div>
         </div>
         

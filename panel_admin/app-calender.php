@@ -190,11 +190,11 @@
                                 <div class="">
                                     <div id="external-events" class="my-3">
                                         <p>Seret dan lepas acara event atau klik di kalender</p>
-                                        <div class="external-event" data-class="bg-primary"><i class="fa fa-move"></i>New Theme Release</div>
-                                        <div class="external-event" data-class="bg-success"><i class="fa fa-move"></i>My Event
+                                        <div class="external-event" data-class="bg-primary"><i class="fa fa-move"></i>pawai budaya</div>
+                                        <div class="external-event" data-class="bg-success"><i class="fa fa-move"></i>pameran
                                         </div>
-                                        <div class="external-event" data-class="bg-warning"><i class="fa fa-move"></i>Meet manager</div>
-                                        <div class="external-event" data-class="bg-dark"><i class="fa fa-move"></i>Create New theme</div>
+                                        <div class="external-event" data-class="bg-warning"><i class="fa fa-move"></i>karnival</div>
+                                        <div class="external-event" data-class="bg-dark"><i class="fa fa-move"></i>Tari Ular</div>
                                     </div>
                                     <!-- checkbox -->
                                     <div class="checkbox checkbox-event pt-3 pb-5">

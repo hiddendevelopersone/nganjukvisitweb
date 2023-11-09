@@ -25,7 +25,7 @@ $pengguna3 = startquery($sqlquery3);
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link href="./css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/label.css">
-    <!-- <link rel="stylesheet" href="../tabelakunstyle.css"> -->
+    <link rel="stylesheet" href="../tabelakunstyle.css">
 
 </head>
 

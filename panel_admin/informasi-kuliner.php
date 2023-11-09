@@ -221,10 +221,11 @@ while($row = mysqli_fetch_assoc($result)){
                 <td><?= $lastresult["lokasi"];?></td>
                 <td><?= $lastresult["deskripsi"];?></td>
                 <td>
-                  <div class="d-inline-flex">
-                    <a href="/event/detail_event.php?id_kuliner=<?= $lastresult['id_kuliner'] ?>">
-                    <div class="btn btn-primary mr-1 ">Edit</div></a>
-                    <div class="btn btn-danger">Hapus</div>
+                <div class="d-inline-flex">
+                    <a href="edit-kuliner.php?id_kuliner=<?= $lastresult['id_kuliner'] ?>">
+                    <div class="btn btn-primary mr-1 " name="edit">Edit</div></a>
+                    <a href="hapusdatakuliner.php?id_kuliner=<?= $lastresult['id_kuliner'] ?>">
+                    <div class="btn btn-danger" name="delete">Hapus</div></a>
                   </div>
                 </td>
               </tr>

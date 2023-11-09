@@ -228,9 +228,10 @@ while($row = mysqli_fetch_assoc($result)){
                 <td><?= $lastresult["linkmaps"];?></td>
                 <td>
                   <div class="d-inline-flex">
-                    <a href="/event/detail_event.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
-                    <div class="btn btn-primary mr-1 ">Edit</div></a>
-                    <div class="btn btn-danger">Hapus</div>
+                    <a href="edit-wisata.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
+                    <div class="btn btn-primary mr-1 " name="edit">Edit</div></a>
+                    <a href="hapusdatawisata.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
+                    <div class="btn btn-danger" name="delete">Hapus</div></a>
                   </div>
                 </td>
               </tr>

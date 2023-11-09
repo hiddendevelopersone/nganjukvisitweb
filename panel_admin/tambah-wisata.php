@@ -1,3 +1,47 @@
+<?php
+include('../koneksi.php');
+
+$sqlquery = "SELECT * FROM informasi_wisata";
+$result = $conn->query($sqlquery);
+
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+}
+$nama_wisata = "";
+$alamat = "";
+$harga_tiket = "";
+$jadwal = "";
+$coordinate = "";
+$linkmaps = "";
+$error;
+$success;
+if (isset($_POST['simpan'])) {
+    $nama_wisata = $_POST['nama_wisata'];
+    $alamat = $_POST['alamat'];
+    $harga_tiket = $_POST['harga_tiket'];
+    $jadwal = $_POST['jadwal'];
+    $coordinate = $_POST['coordinate'];
+    $linkmaps = $_POST['linkmaps'];
+    $deskripsi = $_POST['deskripsi'];
+
+        if ($nama_wisata && $alamat && $harga_tiket && $jadwal && $coordinate && $linkmaps) {
+        $sql1 = "insert into informasi_wisata(nama_wisata,alamat,harga_tiket,jadwal,coordinate,linkmaps,id_user,deskripsi) values ('$nama_wisata','$alamat','$harga_tiket','$jadwal','$coordinate','$linkmaps','U1000001','$deskripsi')";
+        $q1 = mysqli_query($conn, $sql1);
+        if ($q1) {
+            $sukses = "Berhasil memasukan data baru";
+            echo "<script>alert('Berhasil memasukan data baru')</script>";
+        } else {
+            $error = "Gagal memasukan data";
+            echo "<script>alert('Gagal memasukkan data')</script>";
+        }
+    } else {
+        $error = "Silahkan masukan semua data";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +82,7 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <?php include("navheader.php");?>
+        <?php include("navheader.php"); ?>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -57,7 +101,8 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control" type="search" placeholder="Search"
+                                            aria-label="Search">
                                     </form>
                                 </div>
                             </div>
@@ -75,7 +120,8 @@
                                             <span class="success"><i class="ti-user"></i></span>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
+                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
+                                                        Successfully
                                                     </p>
                                                 </a>
                                             </div>
@@ -94,7 +140,8 @@
                                             <span class="danger"><i class="ti-bookmark"></i></span>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
+                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as
+                                                        unsolved.
                                                     </p>
                                                 </a>
                                             </div>
@@ -113,7 +160,8 @@
                                             <span class="success"><i class="ti-image"></i></span>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong> Successfully
+                                                    <p><strong> James.</strong> has added a<strong>customer</strong>
+                                                        Successfully
                                                     </p>
                                                 </a>
                                             </div>
@@ -155,7 +203,7 @@
         <!-- **********************************
             Sidebar start
         ***********************************-->
-            <?php include("sidebar.php");?>
+        <?php include("sidebar.php"); ?>
         <!--**********************************
             Sidebar end
         *********************************** -->
@@ -182,51 +230,53 @@
                 </div>
             </div>
         </div> -->
-        <div id="body"  class="content-body">
+        <div id="body" class="content-body">
             <div class="container">
-                <div class="mb-3" >
-                    <label for="exampleFormControlInput1" class="form-label" >Nama Wisata</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Wisata" >
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Jam Operasional</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Jam Operasional">
-                  </div>
-                  <div class="mb-3">
+                <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+              
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nama Wisata</label>
+                <input type="text" class="form-control" id="nama_wisata" placeholder="Masukan Nama Wisata" name="nama_wisata">
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Alamat">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Harga Tiket Masuk</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Harga Tiket Masuk">
-                  </div>
-                  <div class="mb-3">
+                    <input type="text" class="form-control" id="alamat" placeholder="Masukan Alamat" name="alamat">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Harga</label>
+                    <input type="text" class="form-control" id="harga_tiket" placeholder="Masukan Alamat" name="harga_tiket">
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Jadwal</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Jadwal">
-                  </div>
-                  <div class="mb-3">
+                    <input type="text" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal">
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Coordinate</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Coordinate">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Linkmaps</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Linkmaps">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-                  <div class="mb-3">
+                    <input type="text" class="form-control" id="coordinate" placeholder="Masukan Coordinate" name="coordinate">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Link Maps</label>
+                    <input type="text" class="form-control" id="linkmaps" placeholder="Masukan Coordinate" name="linkmaps">
+                </div>
+                <div class="mb-3">
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                </div>
+                <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>
                     <input class="form-control" type="file" id="formFile">
-                  </div>
-                  <button type="submit" class="btn btn-primary">SIMPAN</button>
+                </div>
+                <div class="col-12">
+                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                </div>
+                </form>
             </div>
         </div>
+
         <!-- <div class="content-body">
             <div class="container">
                 <h5 class="informasi-wisata">Informasi Wisata</h5>
-                <form>
+                <form action="" method="post" enctype="multipart/form-data autocomplete="off">
                     <div class="col-md-6">
                     <div class="form-group">
                         <label class="">Nama Wisata</label>
@@ -294,7 +344,7 @@
            Support ticket button end
         ***********************************-->
 
-        
+
     </div>
     <!--**********************************
         Main wrapper end
@@ -307,7 +357,7 @@
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
-    
+
 
 </body>
 
