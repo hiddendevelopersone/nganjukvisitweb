@@ -22,7 +22,7 @@ if(isset($_POST["login"])){
         // Pengguna berhasil login
         // Redirect ke halaman beranda
         if (password_verify($password, $userdata["kata_sandi"])){
-            header("Location: tabelakun.php");
+            header("Location: panel_admin");
             exit(); // Penting untuk menghentikan eksekusi skrip setelah mengalihkan
         }else {
             header("Location: loginnew.php");
