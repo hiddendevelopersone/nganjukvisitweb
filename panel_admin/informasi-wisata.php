@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../koneksi.php');
 
 $sqlquery = "SELECT * FROM informasi_wisata";
@@ -8,6 +9,39 @@ $rows= [];
 while($row = mysqli_fetch_assoc($result)){
   $rows[] = $row;
 }
+if(isset($_SESSION["notifikasitambah"])) {
+    if ($_SESSION["notifikasitambah"] === "1") {
+        echo "<script>alert('Berhasil memasukan data baru')</script>";
+    } else if ($_SESSION["notifikasitambah"] === "0") {
+        echo "<script>alert('Gagal memasukan data baru')</script>";
+    } else {
+        echo "<script>alert('Gagal memasukan data baru')</script>";
+    }
+    unset($_SESSION["notifikasitambah"]);
+}
+
+if(isset($_SESSION["notifikasiedit"])) {
+    if ($_SESSION["notifikasiedit"] === "1") {
+        echo "<script>alert('Berhasil merubah data')</script>";
+    } else if ($_SESSION["notifikasiedit"] === "0") {
+        echo "<script>alert('Gagal merubah data')</script>";
+    } else {
+        echo "<script>alert('Gagal merubah data2')</script>";
+    }
+    unset($_SESSION["notifikasiedit"]);
+}
+
+if(isset($_SESSION["deletionstatus"])) {
+    if ($_SESSION["deletionstatus"] === "1") {
+        echo "<script>alert('Berhasil menghapus data')</script>";
+    } else if ($_SESSION["deletionstatus"] === "0") {
+        echo "<script>alert('Gagal menghapus data')</script>";
+    } else {
+        echo "<script>alert('Gagal menghapus data2')</script>";
+    }
+    unset($_SESSION["deletionstatus"]);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -230,7 +264,8 @@ while($row = mysqli_fetch_assoc($result)){
                   <div class="d-inline-flex">
                     <a href="edit-wisata.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
                     <div class="btn btn-primary mr-1 " name="edit">Edit</div></a>
-                    <a href="hapusdatawisata.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
+                    <a href="hapusdatawisata.php?id_wisata=<?= $lastresult['id_wisata'] ?>" onclick="
+                return confirm ('apakah anda yakin ingin menghapusnya')">
                     <div class="btn btn-danger" name="delete">Hapus</div></a>
                   </div>
                 </td>

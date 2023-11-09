@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../koneksi.php');
 
 // $nama_wisata="";
@@ -35,14 +36,16 @@ if(isset($_POST["simpan"])) {
     $result = mysqli_query($conn, $sqlquerySimpan);
 
     if($result) {
-        echo "<script>alert('Data Berhasil Disimpan')</script>";
+        $_SESSION["notifikasiedit"] = "1";
+        // echo "<script>alert('Data Berhasil Disimpan')</script>";
+        header("Location: informasi-wisata.php");
     }else {
+        $_SESSION["notifikasiedit"] = "0";
         echo "<script>alert('Data Gagal Diperbarui')</script>";
     }
 
     $conn->close();
 
-    header("Location: informasi-wisata.php");
 }
 
 // echo $rows["nama_wisata"];

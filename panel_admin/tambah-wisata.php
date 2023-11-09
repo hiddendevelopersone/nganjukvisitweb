@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../koneksi.php');
 
 $sqlquery = "SELECT * FROM informasi_wisata";
@@ -29,14 +30,16 @@ if (isset($_POST['simpan'])) {
         $sql1 = "insert into informasi_wisata(nama_wisata,alamat,harga_tiket,jadwal,coordinate,linkmaps,id_user,deskripsi) values ('$nama_wisata','$alamat','$harga_tiket','$jadwal','$coordinate','$linkmaps','U1000001','$deskripsi')";
         $q1 = mysqli_query($conn, $sql1);
         if ($q1) {
-            $sukses = "Berhasil memasukan data baru";
-            echo "<script>alert('Berhasil memasukan data baru')</script>";
+            $_SESSION["notifikasitambah"] = "1";
+            header("Location: informasi-wisata.php");
+            // echo "<script>alert('Berhasil memasukan data baru')</script>";
         } else {
-            $error = "Gagal memasukan data";
+            $_SESSION["notifikasitambah"] = "0";
             echo "<script>alert('Gagal memasukkan data')</script>";
         }
     } else {
-        $error = "Silahkan masukan semua data";
+        echo "<script>alert('data belum lengkap')</script>";
+        header("Location: tambah-wisata.php");
     }
 }
 ?>
@@ -236,38 +239,38 @@ if (isset($_POST['simpan'])) {
               
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nama Wisata</label>
-                <input type="text" class="form-control" id="nama_wisata" placeholder="Masukan Nama Wisata" name="nama_wisata">
+                <input type="text" class="form-control" id="nama_wisata" placeholder="Masukan Nama Wisata" name="nama_wisata" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="alamat" placeholder="Masukan Alamat" name="alamat">
+                    <input type="text" class="form-control" id="alamat" placeholder="Masukan Alamat" name="alamat" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Harga</label>
-                    <input type="text" class="form-control" id="harga_tiket" placeholder="Masukan Alamat" name="harga_tiket">
+                    <input type="text" class="form-control" id="harga_tiket" placeholder="Masukan Alamat" name="harga_tiket" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Jadwal</label>
-                    <input type="text" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal">
+                    <input type="text" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Coordinate</label>
-                    <input type="text" class="form-control" id="coordinate" placeholder="Masukan Coordinate" name="coordinate">
+                    <input type="text" class="form-control" id="coordinate" placeholder="Masukan Coordinate" name="coordinate" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Link Maps</label>
-                    <input type="text" class="form-control" id="linkmaps" placeholder="Masukan Coordinate" name="linkmaps">
+                    <input type="text" class="form-control" id="linkmaps" placeholder="Masukan Coordinate" name="linkmaps" required>
                 </div>
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile">
+                    <input class="form-control" type="file" id="formFile" required>
                 </div>
                 <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary" required>
                 </div>
                 </form>
             </div>
