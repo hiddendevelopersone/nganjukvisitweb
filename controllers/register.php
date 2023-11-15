@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $kodee = $huruf . $urutan;
 
                 // get data user
-                $sql = "INSERT INTO user VALUES ('$kodee', 'USER', '$username', '$full_name', null, null, '$email', '$epassword')";
+                $sql = "INSERT INTO user VALUES ('$kodee', 'USER', '$username', '$full_name', null, null, '$email', '$epassword', '')";
                 $result = $conn->query($sql);
 
                 // jika register berhasil
