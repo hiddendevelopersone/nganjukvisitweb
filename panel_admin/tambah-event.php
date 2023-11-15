@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../koneksi.php');
 
 $sqlquery = "SELECT * FROM event";
@@ -9,7 +10,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row;
 }
 $nama_event = "";
-$status = "";
 $jadwal = "";
 $lokasi = "";
 $deskripsi = "";
@@ -18,24 +18,26 @@ $error;
 $success;
 if (isset($_POST['simpan'])) {
     $nama_event = $_POST['nama_event'];
-    $status = $_POST['status'];
     $jadwal = $_POST['jadwal'];
     $lokasi = $_POST['lokasi'];
     $deskripsi = $_POST['deskripsi'];
     $hari = $_POST['hari'];
-
-        if ($nama_event && $status && $jadwal && $lokasi && $deskripsi && $hari) {
-        $sql1 = "insert into event(nama_event,status,jadwal,lokasi,deskripsi,id_wisata,hari) values ('$nama_event','$status','$jadwal','$lokasi','$deskripsi','2','$hari')";
+    // echo json_encode($_POST);
+    // exit();
+        if ($nama_event && $jadwal && $lokasi && $deskripsi && $hari) {
+        $sql1 = "insert into event(nama_event,jadwal,lokasi,deskripsi,id_wisata,hari) values ('$nama_event','$jadwal','$lokasi','$deskripsi','2','$hari')";
         $q1 = mysqli_query($conn, $sql1);
         if ($q1) {
-            $sukses = "Berhasil memasukan data baru";
-            echo "<script>alert('Berhasil memasukan data baru')</script>";
+            $_SESSION["notifikasitambah"] = "1";
+            header("Location: informasi-event.php");
+            // echo "<script>alert('Berhasil memasukan data baru')</script>";
         } else {
-            $error = "Gagal memasukan data";
+            $_SESSION["notifikasitambah"] = "0";
             echo "<script>alert('Gagal memasukkan data')</script>";
         }
     } else {
-        $error = "Silahkan masukan semua data";
+        echo "<script>alert('data belum lengkap')</script>";
+        header("Location: tambah-event.php");
     }
 }
 ?>
@@ -89,108 +91,7 @@ if (isset($_POST['simpan'])) {
         <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">
-            <div class="header-content">
-                <nav class="navbar navbar-expand">
-                    <div class="collapse navbar-collapse justify-content-between">
-                        <div class="header-left">
-                            <div class="search_bar dropdown">
-                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <i class="mdi mdi-magnify"></i>
-                                </span>
-                                <div class="dropdown-menu p-0 m-0">
-                                    <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <ul class="navbar-nav header-right">
-                            <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-bell"></i>
-                                    <div class="pulse-css"></div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="danger"><i class="ti-bookmark"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-heart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-image"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong> Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                    </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item">
-                                        <i class="icon-user"></i>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
-                                    <a href="./email-inbox.html" class="dropdown-item">
-                                        <i class="icon-envelope-open"></i>
-                                        <span class="ml-2">Inbox </span>
-                                    </a>
-                                    <a href="./page-login.html" class="dropdown-item">
-                                        <i class="icon-key"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <?php include("header.php");?>
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -212,31 +113,23 @@ if (isset($_POST['simpan'])) {
               
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Nama Event</label>
-              <input type="text" class="form-control" id="nama_event" placeholder="Masukan Nama Event" name="nama_event">
-              </div>
-              <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Status</label>
-                  <input type="text" class="form-control" id="status" placeholder="Masukan Status" name="status">
+              <input type="text" class="form-control" id="nama_event" placeholder="Masukan Nama Event" name="nama_event" autofocus Required>
               </div>
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Jadwal</label>
-                  <input type="date" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal">
+                  <input type="datetime-local" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal" Required>
               </div>
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Lokasi</label>
-                  <input type="text" class="form-control" id="jadwal" placeholder="Masukan Jadwal" name="jadwal">
+                  <input type="text" class="form-control" id="lokasi" placeholder="Masukan lokasi" name="lokasi" Required>
               </div>
               <div class="mb-3">
                   <label for="deskripsi" class="form-label">Deskripsi</label>
-                  <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                  <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" Required></textarea>
               </div>
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Hari</label>
-                  <input type="text" class="form-control" id="hari" placeholder="Masukan Hari" name="hari">
-              </div>
-              <div class="mb-3">
-                  <label for="formFile" class="form-label">Default file input example</label>
-                  <input class="form-control" type="file" id="formFile">
+                  <input type="text" class="form-control" id="hari" placeholder="Masukan Hari" name="hari" Required>
               </div>
               <div class="col-12">
                   <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">

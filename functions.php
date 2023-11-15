@@ -14,4 +14,10 @@ function startquery($query) {
     return $rows;
 }
 
+// function cari($keyword){
+//     $query = "SELECT * FROM informasi_wisata
+//     WHERE nama_wisata = '$keyword'";
+//     return query($query);
+// }
+
 ?>
