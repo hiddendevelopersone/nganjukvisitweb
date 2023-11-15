@@ -1,15 +1,16 @@
 <?php
 session_start();
 include('../koneksi.php');
+// require '../functions.php';
 
 $sqlquery = "SELECT * FROM informasi_wisata";
 $result = $conn->query($sqlquery);
 
-$rows= [];
-while($row = mysqli_fetch_assoc($result)){
-  $rows[] = $row;
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
 }
-if(isset($_SESSION["notifikasitambah"])) {
+if (isset($_SESSION["notifikasitambah"])) {
     if ($_SESSION["notifikasitambah"] === "1") {
         echo "<script>alert('Berhasil memasukan data baru')</script>";
     } else if ($_SESSION["notifikasitambah"] === "0") {
@@ -20,7 +21,7 @@ if(isset($_SESSION["notifikasitambah"])) {
     unset($_SESSION["notifikasitambah"]);
 }
 
-if(isset($_SESSION["notifikasiedit"])) {
+if (isset($_SESSION["notifikasiedit"])) {
     if ($_SESSION["notifikasiedit"] === "1") {
         echo "<script>alert('Berhasil merubah data')</script>";
     } else if ($_SESSION["notifikasiedit"] === "0") {
@@ -31,7 +32,7 @@ if(isset($_SESSION["notifikasiedit"])) {
     unset($_SESSION["notifikasiedit"]);
 }
 
-if(isset($_SESSION["deletionstatus"])) {
+if (isset($_SESSION["deletionstatus"])) {
     if ($_SESSION["deletionstatus"] === "1") {
         echo "<script>alert('Berhasil menghapus data')</script>";
     } else if ($_SESSION["deletionstatus"] === "0") {
@@ -41,6 +42,9 @@ if(isset($_SESSION["deletionstatus"])) {
     }
     unset($_SESSION["deletionstatus"]);
 }
+// if (isset($_POST["cari"])) {
+//     $informasi_wisata = cari($_POST["keyword"]);
+// }
 
 ?>
 
@@ -84,7 +88,7 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Nav header start
         ***********************************-->
-        <?php include("navheader.php");?>
+        <?php include("navheader.php"); ?>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -92,108 +96,7 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">
-            <div class="header-content">
-                <nav class="navbar navbar-expand">
-                    <div class="collapse navbar-collapse justify-content-between">
-                        <div class="header-left">
-                            <div class="search_bar dropdown">
-                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <i class="mdi mdi-magnify"></i>
-                                </span>
-                                <div class="dropdown-menu p-0 m-0">
-                                    <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <ul class="navbar-nav header-right">
-                            <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-bell"></i>
-                                    <div class="pulse-css"></div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="danger"><i class="ti-bookmark"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-heart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-image"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong> Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                    </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item">
-                                        <i class="icon-user"></i>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
-                                    <a href="./email-inbox.html" class="dropdown-item">
-                                        <i class="icon-envelope-open"></i>
-                                        <span class="ml-2">Inbox </span>
-                                    </a>
-                                    <a href="./page-login.html" class="dropdown-item">
-                                        <i class="icon-key"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <?php include("header.php"); ?>
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -201,7 +104,7 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <?php include("sidebar.php");?>
+        <?php include("sidebar.php"); ?>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -209,12 +112,12 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Content body start
         ***********************************-->
-        
-        
+
+
         <div class="content-body warnatable">
-            
+
             <div class="container mt-3">
-            <div class="row page-titles mx-0">
+                <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Halo,selamat datang!</h4>
@@ -229,60 +132,148 @@ if(isset($_SESSION["deletionstatus"])) {
                         </ol>
                     </div>
                 </div>
-                <div class="row">
-                <h5 class="judul-tambahdata">Tambah Data</h5>
-                <a href="tambah-wisata.php">
-                <img src="./images/OIP.jpg" class="img-tambah" alt="Ikon">
-                </a>
+                <div class="row" style="display: flex;">
+                    <h5 class="judul-tambahdata">Tambah Data</h5>
+                    <a href="tambah-wisata.php">
+                        <img src="./images/OIP.jpg" class="img-tambah" alt="Ikon">
+                    </a>
+
+                    <!-- <form class="" action="" method="POST">
+                        <input type="text" name="keyword" placeholder="Masukkan Pencarian" autocomplete="off" autofocus>
+                        <button type="submit" name="cari">Cari</button>
+                    </form> -->
                 </div>
+                <br>
+                <form action="informasi-wisata.php" method="GET">
+                    <div class="form-group" style="display: flex; gap: 10px;">
+                        <input type="text" name="cari" class="form-control" id="searchInput"
+                            style="width: 50%; display: flex-end;" placeholder="Cari Wisata"
+                            value="<?php echo isset($_GET['cari']) ? $_GET['cari'] : ''; ?>">
+                        <button type="submit" class="btn btn-info" id="searchButton">Cari</button>
+                        <?php if (isset($_GET['cari'])): ?>
+                            <a href="informasi-wisata.php" class="btn btn-secondary">Hapus Pencarian</a>
+                        <?php endif; ?>
+                    </div>
+                </form>
+
+                <script>
+                    document.getElementById('searchButton').addEventListener('click', function (event) {
+                        var searchInput = document.getElementById('searchInput');
+
+                        if (searchInput.value === '') {
+                            event.preventDefault(); // Mencegah pengiriman form jika field pencarian kosong
+                            searchInput.placeholder = 'Kolom pencarian tidak boleh kosong!';
+                            searchInput.style.borderColor = 'red'; // Mengubah warna border field
+
+                        } else {
+                            searchInput.style.borderColor = '';
+                        }
+                    });
+
+                    document.getElementById('searchInput').addEventListener('click', function () {
+                        var searchInput = document.getElementById('searchInput');
+                        searchInput.placeholder = 'Cari Wisata'; // Mengembalikan placeholder ke default saat input diklik
+                        searchInput.style.borderColor = ''; // Mengembalikan warna border ke default saat input diklik
+                    });
+                </script>
+
                 <table class="table table-dark table-striped">
-            <thead>
-              <tr>
-                <th scope="col">No</th>
-                <!-- <th scope="col">Gambar</th> -->
-                <th scope="col">Nama</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Coordinate</th>
-                <th scope="col">Jadwal</th>
-                <th scope="col">Link Maps</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i = 1; foreach ( $rows as $lastresult ) : ?>
-              <tr>
-                <th scope="row"><?=$i?></th>
-                <!-- <td>Mark</td> -->
-                <td><?= $lastresult["nama_wisata"];?></td>
-                <td><?= $lastresult["alamat"];?></td>
-                <td><?= $lastresult["harga_tiket"];?></td>
-                <td><?= $lastresult["coordinate"];?></td>
-                <td><?= $lastresult["jadwal"];?></td>
-                <td><?= $lastresult["linkmaps"];?></td>
-                <td>
-                  <div class="d-inline-flex">
-                    <a href="edit-wisata.php?id_wisata=<?= $lastresult['id_wisata'] ?>">
-                    <div class="btn btn-primary mr-1 " name="edit">Edit</div></a>
-                    <a href="hapusdatawisata.php?id_wisata=<?= $lastresult['id_wisata'] ?>" onclick="
-                return confirm ('apakah anda yakin ingin menghapusnya')">
-                    <div class="btn btn-danger" name="delete">Hapus</div></a>
-                  </div>
-                </td>
-              </tr>
-              <?php 
-              $i++;
-              endforeach;
-              ?>
-            </tbody>
-          </table>
-        
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <!-- <th scope="col">Gambar</th> -->
+                            <th scope="col">Nama Wisata</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Harga Tiket</th>
+                            <th scope="col">Jadwal</th>
+                            <th scope="col">Gambar</th>
+                            <th scope="col">Coordinate</th>
+                            <th scope="col">Link Maps</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (isset($_GET['reset'])) {
+                            // Pengguna menekan tombol "Hapus Pencarian"
+                            header("Location: informasi-wisata.php"); // Mengarahkan ke halaman tanpa parameter pencarian
+                            exit();
+                        }
+
+                        if (isset($_GET['cari'])) {
+                            $searchTerm = $conn->real_escape_string($_GET['cari']);
+                            $sql = "SELECT * FROM informasi_wisata WHERE nama_wisata LIKE '%$searchTerm%'";
+                        } else {
+                            $sql = "SELECT * FROM informasi_wisata ORDER BY id_wisata DESC";
+                        }
+
+                        $q2 = mysqli_query($conn, $sql);
+                        $urut = 1;
+                        while ($r2 = mysqli_fetch_array($q2)) {
+                            $id = $r2['id_wisata'];
+                            $nama = $r2['nama_wisata'];
+                            $deskripsi = $r2['deskripsi'];
+                            $alamat = $r2['alamat'];
+                            $harga = $r2['harga_tiket'];
+                            $jadwal = $r2['jadwal'];
+                            $gambar = $r2['gambar'];
+                            $koordinat = $r2['coordinate'];
+                            $link = $r2['linkmaps'];
+                            ?>
+                            <tr>
+                                <th scope="row">
+                                    <?php echo $urut++ ?>
+                                </th>
+                                <!-- <td>Mark</td> -->
+                                <td scope="row">
+                                    <?php echo $nama ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $deskripsi ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $alamat ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $harga ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $jadwal ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $gambar ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $koordinat ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $link ?>
+                                </td>
+                                <td scope="row">
+                                    <div class="d-inline-flex">
+                                        <a href="edit-wisata.php?id_wisata=<?php echo $id ?>">
+                                            <div class="btn btn-primary mr-1 " name="edit">Edit</div>
+                                        </a>
+                                        <a href="hapusdatawisata.php?id_wisata=<?php echo $id ?>" onclick="
+                             return confirm ('apakah anda yakin ingin menghapusnya')">
+                                            <div class="btn btn-danger" name="delete">Hapus</div>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+
             </div>
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
-<div class=""></div>
+        <div class=""></div>
 
         <!--**********************************
             Footer start
@@ -304,7 +295,7 @@ if(isset($_SESSION["deletionstatus"])) {
            Support ticket button end
         ***********************************-->
 
-        
+
     </div>
     <!--**********************************
         Main wrapper end
@@ -317,7 +308,6 @@ if(isset($_SESSION["deletionstatus"])) {
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
-    
 
 </body>
 

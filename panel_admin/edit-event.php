@@ -12,8 +12,8 @@ include('../koneksi.php');
 // $coordinate ="";
 // $linkmaps="";
 
-$id = $_GET["id_wisata"];
-$sqlquery = "SELECT * FROM informasi_wisata where id_wisata = '$id'";
+$id = $_GET["id_event"];
+$sqlquery = "SELECT * FROM event where id_event = '$id'";
 
 $rows = [];
 $result = mysqli_query($conn, $sqlquery);
@@ -22,24 +22,21 @@ while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row;
 }
 
-if(isset($_POST["simpan"])) {
-    $nama_wisata = $_POST['nama_wisata'];
-    $alamat = $_POST['alamat'];
-    $harga_tiket = $_POST['harga_tiket'];
+if (isset($_POST["simpan"])) {
+    $nama_event = $_POST['nama_event'];
     $jadwal = $_POST['jadwal'];
-    $coordinate = $_POST['coordinate'];
-    $linkmaps = $_POST['linkmaps'];
+    $lokasi = $_POST['lokasi'];
     $deskripsi = $_POST['deskripsi'];
-    $gambar = "pngjpg";
+    $hari = $_POST['hari'];
 
-    $sqlquerySimpan = "UPDATE `informasi_wisata` SET `nama_wisata`='$nama_wisata',`id_user`='U1000001',`deskripsi`='$deskripsi',`alamat`='$alamat',`harga_tiket`='$harga_tiket',`jadwal`='$jadwal',`gambar`='$gambar',`coordinate`='$coordinate',`linkmaps`='$linkmaps' WHERE id_wisata='$id'";
+    $sqlquerySimpan = "UPDATE `event` SET `nama_event`='$nama_event',`id_wisata`='2',`jadwal`='$jadwal',`lokasi`='$lokasi',`deskripsi`='$deskripsi',`hari`='$hari' WHERE id_event='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
 
-    if($result) {
+    if ($result) {
         $_SESSION["notifikasiedit"] = "1";
         // echo "<script>alert('Data Berhasil Disimpan')</script>";
-        header("Location: informasi-wisata.php");
-    }else {
+        header("Location: informasi-event.php");
+    } else {
         $_SESSION["notifikasiedit"] = "0";
         echo "<script>alert('Data Gagal Diperbarui')</script>";
     }
@@ -142,38 +139,34 @@ if(isset($_POST["simpan"])) {
         <div id="body" class="content-body">
             <div class="container">
                 <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
-              
-                <div class="mb-3">
-        <label for="nama_wisata" class="form-label">Nama Wisata</label>
-        <input type="text" class="form-control" id="nama_wisata" name="nama_wisata" value="<?= $rows[0]["nama_wisata"];?>">
-        </div>
-        <div class="mb-3">
-        <label for="alamat" class="form-label">Alamat</label>
-        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $rows[0]["alamat"];?>">
-        </div>
-        <div class="mb-3">
-        <label for="harga" class="form-label">Harga</label>
-        <input type="text" class="form-control" id="harga" name="harga_tiket" value="<?= $rows[0]["harga_tiket"];?>">
-        </div>
-        <div class="mb-3">
-        <label for="coordinate" class="form-label">Coordinate</label>
-        <input type="text" class="form-control" id="coordinate" name="coordinate" value="<?= $rows[0]["coordinate"];?>">
-        </div>
-        <div class="mb-3">
-        <label for="jadwal" class="form-label">Jadwal</label>
-        <input type="text" class="form-control" id="jadwal" name="jadwal" value="<?= $rows[0]["jadwal"];?>">
-        </div>
-        <div class="mb-3">
-        <label for="linkmaps" class="form-label">Link Maps</label>
-        <input type="text" class="form-control" id="linkmaps" name="linkmaps" value="<?= $rows[0]["linkmaps"];?>">
-        </div>
-        <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"><?= $rows[0]["deskripsi"];?></textarea>
-                </div>
-                <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
-                </div>
+
+                    <div class="mb-3">
+                        <label for="nama_event" class="form-label">Nama event</label>
+                        <input type="text" class="form-control" id="nama_event" name="nama_event"
+                            value="<?= $rows[0]["nama_event"]; ?>" Required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jadwal" class="form-label">Jadwal</label>
+                        <input type="datetime-local" class="form-control" id="jadwal" name="jadwal"
+                            value="<?= $rows[0]["jadwal"]; ?>" Required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lokasi" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control" id="lokasi" name="lokasi"
+                            value="<?= $rows[0]["lokasi"]; ?>" Required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsi" rows="3"
+                            name="deskripsi" Required><?= $rows[0]["deskripsi"]; ?></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hari" class="form-label">Hari</label>
+                        <input type="text" class="form-control" id="hari" name="hari" value="<?= $rows[0]["hari"]; ?>" Required>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    </div>
                 </form>
             </div>
         </div>
