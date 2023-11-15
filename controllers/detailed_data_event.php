@@ -4,7 +4,7 @@ require "koneksi.php";
 
 $idSelected = $_GET["id_selected"];
 
-$sqlquery = "SELECT * FROM informasi_wisata WHERE id_wisata = '$idSelected'";
+$sqlquery = "SELECT * FROM event WHERE id_event = '$idSelected'";
 
 $result = mysqli_query($conn, $sqlquery);
 
@@ -25,4 +25,5 @@ $response["data"] = $jsonObject;
 $conn->close();
 
 echo json_encode($response);
+
 ?>

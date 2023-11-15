@@ -2,14 +2,16 @@
 
 require "koneksi.php";
 
-$sqlquery = "SELECT * FROM ulasan";
+$idSelected = $_GET["id_selected"];
+
+$sqlquery = "SELECT * FROM ulasan WHERE id_wisata = '$idSelected' ORDER BY tanggal DESC";
 
 $result = mysqli_query($conn, $sqlquery);
 
-$rowresult = $result->fetch_all(MYSQLI_ASSOC);
+$response = array("status"=>"success", "message"=>"data diambil", "data"=>$result->fetch_all(MYSQLI_ASSOC));
 
 $conn->close();
 
-echo json_encode($rowresult);
+echo json_encode($response);
 
 ?>

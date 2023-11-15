@@ -1,4 +1,7 @@
 <?php
+
+  include "../koneksi.php";
+
  $action = htmlspecialchars($_POST['action']);
 
  $response = array("success" => FALSE);
@@ -25,6 +28,7 @@
    echo json_encode($response);
      }
  }else if($action == "base64") {
+  $idUser = $_POST["iduser"];
   $photo = htmlspecialchars($_POST['photo']);
 
   $photo = str_replace('data:image/png;base64,', '', $photo);
@@ -37,6 +41,18 @@
 
   $response["success"] = TRUE;
   $response["message"] = "Upload Successfull";
+
+  $sqlqueryupload = "UPDATE `user` SET gambar = '$file' WHERE id_user = '$idUser'";
+
+  $result = mysqli_query($conn, $sqlqueryupload);
+
+  if ($result) {
+    $response["success"] = TRUE;
+  } else {
+    $response["success"] = FALSE;
+  }
+
+  $conn -> close();
   
   echo json_encode($response);
  }
