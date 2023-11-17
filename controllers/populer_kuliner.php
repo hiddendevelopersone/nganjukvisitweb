@@ -3,7 +3,7 @@ require "koneksi.php";
 
 header("Content-Type: application/json");
 
-$sqlquery = "SELECT favorit_kuliner.id_kuliner, informasi_kuliner.nama_kuliner, informasi_kuliner.deskripsi AS deskripsi, informasi_kuliner.lokasi, COUNT(favorit_kuliner.id_user) AS jumlah_favorit
+$sqlquery = "SELECT favorit_kuliner.id_kuliner, informasi_kuliner.nama_kuliner, informasi_kuliner.deskripsi AS deskripsi, informasi_kuliner.lokasi, informasi_kuliner.gambar, COUNT(favorit_kuliner.id_user) AS jumlah_favorit
 FROM `favorit_kuliner`
 JOIN informasi_kuliner ON favorit_kuliner.id_kuliner = informasi_kuliner.id_kuliner
 JOIN user ON favorit_kuliner.id_user = user.id_user
