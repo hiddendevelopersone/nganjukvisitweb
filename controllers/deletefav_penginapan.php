@@ -11,19 +11,19 @@ $sqlcheck = "SELECT * FROM favorit_penginapan WHERE id_penginapan = '$idPenginap
 
 $checkresult = mysqli_query($conn, $sqlcheck);
 
-if (mysqli_num_rows($checkresult) > 0) {
-    $response = array("status"=>"alreadyex", "message"=>"sudah ada di favorit");
+if (mysqli_num_rows($checkresult) == 0) {
+    $response = array("status"=>"alreadyex", "message"=>"telah dihapus");
 
 } else {
     
-    $sqlquery = "INSERT INTO favorit_penginapan (id_penginapan, id_user) VALUES ('$idPenginapan', '$idPengguna')";
+    $sqlquery = "DELETE FROM favorit_penginapan WHERE id_penginapan = '$idPenginapan' AND id_user = '$idPengguna'";
     
     $result = mysqli_query($conn, $sqlquery);
     
     if ($result) {
-        $response = array("status"=>"success", "message"=>"ditambahkan di favorit");
+        $response = array("status"=>"success", "message"=>"dihapus dari favorit");
     } else {
-        $response = array("status"=>"error", "message"=>"gagal menambahkan favorit");
+        $response = array("status"=>"error", "message"=>"gagal");
     }
 }
 

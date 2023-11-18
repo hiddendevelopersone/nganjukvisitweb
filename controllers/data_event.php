@@ -2,7 +2,7 @@
 
 require "koneksi.php";
 
-$sqlquery = "SELECT * FROM `event`";
+$sqlquery = "SELECT * FROM `event` ORDER BY jadwal DESC";
 
 $result = mysqli_query($conn, $sqlquery);
 
