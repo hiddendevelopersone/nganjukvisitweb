@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idUser = $_POST['idpengguna'];
     // $idUser = "U1000013";
     
-    $sqlquery = "SELECT favorit_penginapan.id_favorit, informasi_penginapan.id_penginapan,  informasi_penginapan.nama_penginapan, informasi_penginapan.deskripsi 
+    $sqlquery = "SELECT favorit_penginapan.id_favorit, informasi_penginapan.id_penginapan,  informasi_penginapan.nama_penginapan, informasi_penginapan.gambar, informasi_penginapan.deskripsi 
     AS deskripsi, user.id_user FROM favorit_penginapan JOIN informasi_penginapan ON favorit_penginapan.id_penginapan = informasi_penginapan.id_penginapan 
     JOIN user ON favorit_penginapan.id_user = user.id_user WHERE user.id_user = '$idUser'";
     
