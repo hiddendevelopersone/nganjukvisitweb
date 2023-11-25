@@ -1,0 +1,27 @@
+[25-Nov-2023 16:56:15 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 8
+[25-Nov-2023 16:56:15 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 8
+[25-Nov-2023 16:56:15 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 11
+[25-Nov-2023 17:01:56 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 8
+[25-Nov-2023 17:01:56 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 8
+[25-Nov-2023 17:01:56 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 11
+[25-Nov-2023 17:03:34 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 8
+[25-Nov-2023 17:03:34 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 8
+[25-Nov-2023 17:03:34 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 11
+[25-Nov-2023 17:03:39 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksi.php on line 8
+[25-Nov-2023 17:03:39 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksi.php on line 8
+[25-Nov-2023 17:03:39 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksi.php on line 11
+[25-Nov-2023 17:04:56 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksi.php on line 8
+[25-Nov-2023 17:04:56 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksi.php on line 8
+[25-Nov-2023 17:04:56 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksi.php on line 11
+[25-Nov-2023 17:05:00 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:05:00 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:05:00 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 10
+[25-Nov-2023 17:05:03 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:05:03 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:05:03 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 10
+[25-Nov-2023 17:05:13 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:05:13 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:05:13 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 10
+[25-Nov-2023 17:06:16 Asia/Jakarta] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:06:16 Asia/Jakarta] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 7
+[25-Nov-2023 17:06:16 Asia/Jakarta] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/tifz1761/public_html/nganjukvisit/koneksibaru.php on line 10
