@@ -20,8 +20,10 @@ $sqlquery = "UPDATE `user` SET `fullname` = '$ufullname', `email` = '$uemail', `
 $result = mysqli_query($conn, $sqlquery);
 
 if($result) {
+    $dataresuser = mysqli_query($conn, "SELECT * FROM `user` WHERE id_user = '$userid'");
+    $resassoc = $dataresuser->fetch_assoc();
 
-    $response = array("status"=>"success", "message"=>"berhasil menyimpan profile");
+    $response = array("status"=>"success", "message"=>"berhasil menyimpan profile", "data"=>$resassoc);
 
 } else {
     $response = array("status"=>"error", "message"=>"gagal menyimpan profile");

@@ -1,6 +1,6 @@
 <?php
 
-  include "../koneksi.php";
+  include "../controllers/koneksi.php";
 
  $action = htmlspecialchars($_POST['action']);
 
@@ -39,17 +39,18 @@
 
   file_put_contents($file, $data);
 
-  $response["success"] = TRUE;
-  $response["message"] = "Upload Successfull";
+  // $response["success"] = TRUE;
+  // $response["message"] = "Upload Successfull";
 
   $sqlqueryupload = "UPDATE `user` SET gambar = '$file' WHERE id_user = '$idUser'";
 
   $result = mysqli_query($conn, $sqlqueryupload);
 
+  
   if ($result) {
-    $response["success"] = TRUE;
+    $response = array("status" => "success", "message" => "photo profile berhasil diupdate");
   } else {
-    $response["success"] = FALSE;
+    $response = array("status" => "success", "message" => "gagal");
   }
 
   $conn -> close();
