@@ -52,7 +52,7 @@ if(isset($_SESSION["deletionstatus"])) {
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link href="./css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/label.css">
+    <link rel="stylesheet" href="css/tabel.css">
 
 </head>
 
@@ -174,7 +174,7 @@ if(isset($_SESSION["deletionstatus"])) {
             <thead>
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Nama Event</th>
+                <th scope="col">Nama</th>
                 <th scope="col">Jadwal</th>
                 <th scope="col">Hari</th>
                 <th scope="col">Lokasi</th>
@@ -189,11 +189,27 @@ if(isset($_SESSION["deletionstatus"])) {
                 header("Location: informasi-event.php"); // Mengarahkan ke halaman tanpa parameter pencarian
                 exit();
             }
+            $jumlahDataPerHalaman = 1;
+
+            // Perform the query to get the total number of rows
+            $queryCount = mysqli_query($conn, "SELECT COUNT(*) as total FROM event");
+            $countResult = mysqli_fetch_assoc($queryCount);
+            $jumlahData = $countResult['total'];
+
+            // Calculate the total number of pages
+            $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+
+            // Get the current page
+            $page = (isset($_GET["page"])) ? $_GET["page"] : 1;
+
+            // Calculate the starting data index for the current page
+            $awalData = ($page - 1) * $jumlahDataPerHalaman;
+
             if (isset($_GET['cari'])) {
                 $searchTerm = $conn->real_escape_string($_GET['cari']);
-                $sql = "SELECT * FROM event WHERE nama_event LIKE '%$searchTerm%'";
+                $sql = "SELECT * FROM event WHERE nama_event LIKE '%$searchTerm%' limit $awalData,$jumlahDataPerHalaman";
             } else {
-                $sql = "SELECT * FROM event ORDER BY id_event DESC";
+                $sql = "SELECT * FROM event ORDER BY id_event DESC limit $awalData,$jumlahDataPerHalaman";
             }
             $q2 = mysqli_query($conn, $sql);
             $urut = 1;
@@ -240,7 +256,25 @@ if(isset($_SESSION["deletionstatus"])) {
               ?>
             </tbody>
           </table>
-        
+            <!-- Pagination code -->
+            <ul class='pagination'>
+                    <!-- Previous page link -->
+                    <?php
+                    if ($page > 1) {
+                        echo "<li class='page-item'><a class='page-link' href='informasi-event.php?page=" . ($page - 1) . "'>&laquo; Previous</a></li>";
+                    }
+
+                    // Numbered pagination links
+                    for ($i = 1; $i <= $jumlahHalaman; $i++) {
+                        echo "<li class='page-item " . (($page == $i) ? 'active' : '') . "'><a class='page-link' href='informasi-event.php?page=$i'>$i</a></li>";
+                    }
+
+                    // Next page link
+                    if ($page < $jumlahHalaman) {
+                        echo "<li class='page-item'><a class='page-link' href='informasi-event.php?page=" . ($page + 1) . "'>Next &raquo;</a></li>";
+                    }
+                    ?>
+                </ul>
             </div>
         </div>
         <!--**********************************

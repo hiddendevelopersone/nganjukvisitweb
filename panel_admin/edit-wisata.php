@@ -171,6 +171,10 @@ if(isset($_POST["simpan"])) {
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"><?= $rows[0]["deskripsi"];?></textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="gambar" class="form-label">Default file input example</label>
+                    <input class="form-control" type="file" id="gambar" value="<?=$row[0]["gambar"];?>" >
+                </div>
                 <div class="col-12">
                     <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
                 </div>

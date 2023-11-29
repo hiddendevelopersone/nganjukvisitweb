@@ -103,7 +103,7 @@ if(isset($_POST["daftar"])){
             exit();    
         }
         else {
-            mysqli_query($conn, "INSERT INTO user VALUES ('$kodee', 'ADMIN', '$username', '$fullname', '$alamat', '$notelp', '$email','$epassword')");
+            mysqli_query($conn, "INSERT INTO user (id_user, level, username, fullname, alamat, no_telepon, email, kata_sandi)VALUES ('$kodee', 'ADMIN', '$username', '$fullname', '$alamat', '$notelp', '$email','$epassword')");
             $_SESSION["registersuccess"] = "1";
             header("Location: loginnew.php");
             exit();

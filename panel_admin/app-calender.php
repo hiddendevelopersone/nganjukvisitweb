@@ -214,7 +214,9 @@
 
     <script src="./vendor/fullcalendar/js/fullcalendar.min.js"></script>
     <script src="./js/plugins-init/fullcalendar-init.js"></script>
-
+    <script>
+        $('#calendar').fullCalendar('removeEvents');
+    </script>
 </body>
 
 </html>

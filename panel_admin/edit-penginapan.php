@@ -22,26 +22,28 @@ while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row;
 }
 
-if(isset($_POST["simpan"])) {
+if (isset($_POST["simpan"])) {
     $nama_penginapan = $_POST['nama_penginapan'];
     $lokasi = $_POST['lokasi'];
+    $linkmaps = $_POST['linkmaps'];
     $deskripsi = $_POST['deskripsi'];
+    $telepon = $_POST['telepon'];
 
-    $sqlquerySimpan = "UPDATE `informasi_penginapan` SET `nama_penginapan`='$nama_penginapan',`id_wisata`='2',`deskripsi`='$deskripsi',`lokasi`='$lokasi' WHERE id_penginapan='$id'";
+    $sqlquerySimpan = "UPDATE `informasi_penginapan` SET `nama_penginapan`='$nama_penginapan',`id_wisata`='2',`deskripsi`='$deskripsi',`lokasi`='$lokasi',`linkmaps`='$linkmaps',`telepon`='$telepon' WHERE id_penginapan='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
 
-    if($result) {
+    if ($result) {
         $_SESSION["notifikasiedit"] = "1";
         header("Location: informasi-penginapan.php");
         // echo "<script>alert('Data Berhasil Disimpan')</script>";
-    }else {
+    } else {
         $_SESSION["notifikasiedit"] = "0";
         echo "<script>alert('Data Gagal Diperbarui')</script>";
     }
 
     $conn->close();
 
-    
+
 }
 
 // echo $rows["nama_wisata"];
@@ -100,7 +102,7 @@ if(isset($_POST["simpan"])) {
         <!--**********************************
             Header start
         ***********************************-->
-        <?php include("header.php");?>
+        <?php include("header.php"); ?>
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -138,22 +140,35 @@ if(isset($_POST["simpan"])) {
         <div id="body" class="content-body">
             <div class="container">
                 <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
-              
-                <div class="mb-3">
-        <label for="nama_penginapan" class="form-label">Nama Penginapan</label>
-        <input type="text" class="form-control" id="nama_penginapan" name="nama_penginapan" value="<?= $rows[0]["nama_penginapan"];?>">
-        </div>
-        <div class="mb-3">
-        <label for="lokasi" class="form-label">Lokasi</label>
-        <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?= $rows[0]["lokasi"];?>">
-        </div>
-        <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"><?= $rows[0]["deskripsi"];?></textarea>
-                </div>
-                <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
-                </div>
+
+                    <div class="mb-3">
+                        <label for="nama_penginapan" class="form-label">Nama Penginapan</label>
+                        <input type="text" class="form-control" id="nama_penginapan" name="nama_penginapan"
+                            value="<?= $rows[0]["nama_penginapan"]; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lokasi" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control" id="lokasi" name="lokasi"
+                            value="<?= $rows[0]["lokasi"]; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkmaps" class="form-label">Linkmaps</label>
+                        <input type="text" class="form-control" id="linkmaps" name="linkmaps"
+                            value="<?= $rows[0]["linkmaps"]; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telepon" class="form-label">Telepon</label>
+                        <input type="text" class="form-control" id="telepon" name="telepon"
+                            value="<?= $rows[0]["telepon"]; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsi" rows="3"
+                            name="deskripsi"><?= $rows[0]["deskripsi"]; ?></textarea>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    </div>
                 </form>
             </div>
         </div>

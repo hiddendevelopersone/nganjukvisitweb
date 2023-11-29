@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if(isset($_SESSION["loginundefined"])) {
   echo "<script>alert('email atau password tidak cocok')</script>";

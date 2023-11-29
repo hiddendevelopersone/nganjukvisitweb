@@ -1,10 +1,11 @@
 <?php
+session_start();
+
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
     echo "NOT FOUND 404";
 }
 if(isset($_POST["login"])){
 
-    session_start();
     // sisipkan class koneksi.php untuk menghubungkan ke database
     include("koneksi.php");
     
@@ -22,6 +23,8 @@ if(isset($_POST["login"])){
         // Pengguna berhasil login
         // Redirect ke halaman beranda
         if (password_verify($password, $userdata["kata_sandi"])){
+            $_SESSION["useremail"] = $email;
+
             header("Location: panel_admin");
             exit(); // Penting untuk menghentikan eksekusi skrip setelah mengalihkan
         }else {

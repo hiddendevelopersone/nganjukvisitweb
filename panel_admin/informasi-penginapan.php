@@ -5,11 +5,11 @@ include('../koneksi.php');
 $sqlquery = "SELECT * FROM informasi_penginapan";
 $result = $conn->query($sqlquery);
 
-$rows= [];
-while($row = mysqli_fetch_assoc($result)){
-  $rows[] = $row;
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
 }
-if(isset($_SESSION["notifikasitambah"])) {
+if (isset($_SESSION["notifikasitambah"])) {
     if ($_SESSION["notifikasitambah"] === "1") {
         echo "<script>alert('Berhasil memasukan data baru')</script>";
     } else if ($_SESSION["notifikasitambah"] === "0") {
@@ -19,7 +19,7 @@ if(isset($_SESSION["notifikasitambah"])) {
     }
     unset($_SESSION["notifikasitambah"]);
 }
-if(isset($_SESSION["notifikasiedit"])) {
+if (isset($_SESSION["notifikasiedit"])) {
     if ($_SESSION["notifikasiedit"] === "1") {
         echo "<script>alert('Berhasil merubah data')</script>";
     } else if ($_SESSION["notifikasiedit"] === "0") {
@@ -29,7 +29,7 @@ if(isset($_SESSION["notifikasiedit"])) {
     }
     unset($_SESSION["notifikasiedit"]);
 }
-if(isset($_SESSION["deletionstatus"])) {
+if (isset($_SESSION["deletionstatus"])) {
     if ($_SESSION["deletionstatus"] === "1") {
         echo "<script>alert('Berhasil menghapus data')</script>";
     } else if ($_SESSION["deletionstatus"] === "0") {
@@ -52,7 +52,7 @@ if(isset($_SESSION["deletionstatus"])) {
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link href="./css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/label.css">
+    <link rel="stylesheet" href="css/tabel.css">
 
 </head>
 
@@ -81,7 +81,7 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Nav header start
         ***********************************-->
-        <?php include("navheader.php");?>
+        <?php include("navheader.php"); ?>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -89,7 +89,7 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Header start
         ***********************************-->
-        <?php include("header.php");?>
+        <?php include("header.php"); ?>
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -97,7 +97,7 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <?php include("sidebar.php");?>
+        <?php include("sidebar.php"); ?>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -105,12 +105,12 @@ if(isset($_SESSION["deletionstatus"])) {
         <!--**********************************
             Content body start
         ***********************************-->
-        
-        
+
+
         <div class="content-body warnatable">
-            
+
             <div class="container mt-3">
-             <div class="row page-titles mx-0">
+                <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Halo,selamat datang!</h4>
@@ -126,122 +126,160 @@ if(isset($_SESSION["deletionstatus"])) {
                     </div>
                 </div>
                 <div class="row">
-                <h5 class="judul-tambahdata">Tambah Data</h5>
-                <a href="tambah-penginapan.php">
-                <img src="./images/OIP.jpg" class="img-tambah" alt="Ikon">
-                </a>
-                <!-- <form action="" method="GET">
+                    <h5 class="judul-tambahdata">Tambah Data</h5>
+                    <a href="tambah-penginapan.php">
+                        <img src="./images/OIP.jpg" class="img-tambah" alt="Ikon">
+                    </a>
+                    <!-- <form action="" method="GET">
                         <input type="text" name="keyword" placeholder="Masukkan Pencarian" autocomplete="off" autofocus>
                         <button type="submit" name="cari">Cari</button>
                     </form> -->
                 </div>
                 <br>
                 <form action="informasi-penginapan.php" method="GET">
-                        <div class="form-group" style="display: flex; gap: 10px;">
-                            <input type="text" name="cari" class="form-control" id="searchInput"
-                                style="width: 50%; display: flex-end;" placeholder="Cari penginapan"
-                                value="<?php echo isset($_GET['cari']) ? $_GET['cari'] : ''; ?>">
-                            <button type="submit" class="btn btn-info"
-                                id="searchButton">Cari</button>
-                            <?php if (isset($_GET['cari'])): ?>
-                                <a href="informasi-penginapan.php" class="btn btn-secondary">Hapus Pencarian</a>
-                            <?php endif; ?>
-                        </div>
-                    </form>
+                    <div class="form-group" style="display: flex; gap: 10px;">
+                        <input type="text" name="cari" class="form-control" id="searchInput"
+                            style="width: 50%; display: flex-end;" placeholder="Cari penginapan"
+                            value="<?php echo isset($_GET['cari']) ? $_GET['cari'] : ''; ?>">
+                        <button type="submit" class="btn btn-info" id="searchButton">Cari</button>
+                        <?php if (isset($_GET['cari'])): ?>
+                            <a href="informasi-penginapan.php" class="btn btn-secondary">Hapus Pencarian</a>
+                        <?php endif; ?>
+                    </div>
+                </form>
 
-                    <script>
-                        document.getElementById('searchButton').addEventListener('click', function (event) {
-                            var searchInput = document.getElementById('searchInput');
+                <script>
+                    document.getElementById('searchButton').addEventListener('click', function (event) {
+                        var searchInput = document.getElementById('searchInput');
 
-                            if (searchInput.value === '') {
-                                event.preventDefault(); // Mencegah pengiriman form jika field pencarian kosong
-                                searchInput.placeholder = 'Kolom pencarian tidak boleh kosong!';
-                                searchInput.style.borderColor = 'red'; // Mengubah warna border field
+                        if (searchInput.value === '') {
+                            event.preventDefault(); // Mencegah pengiriman form jika field pencarian kosong
+                            searchInput.placeholder = 'Kolom pencarian tidak boleh kosong!';
+                            searchInput.style.borderColor = 'red'; // Mengubah warna border field
 
-                            } else {
-                                searchInput.style.borderColor = '';
-                            }
-                        });
+                        } else {
+                            searchInput.style.borderColor = '';
+                        }
+                    });
 
-                        document.getElementById('searchInput').addEventListener('click', function () {
-                            var searchInput = document.getElementById('searchInput');
-                            searchInput.placeholder = 'Cari penginapan'; // Mengembalikan placeholder ke default saat input diklik
-                            searchInput.style.borderColor = ''; // Mengembalikan warna border ke default saat input diklik
-                        });
-                    </script>
-                    
+                    document.getElementById('searchInput').addEventListener('click', function () {
+                        var searchInput = document.getElementById('searchInput');
+                        searchInput.placeholder = 'Cari penginapan'; // Mengembalikan placeholder ke default saat input diklik
+                        searchInput.style.borderColor = ''; // Mengembalikan warna border ke default saat input diklik
+                    });
+                </script>
+
                 <table class="table table-dark table-striped">
-            <thead>
-              <tr>
-                <th scope="col">No</th>
-                <!-- <th scope="col">Gambar</th> -->
-                <th scope="col">Nama</th>
-                <th scope="col">Lokasi</th>
-                <th scope="col">Deskripsi</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              if (isset($_GET['reset'])) {
-                // Pengguna menekan tombol "Hapus Pencarian"
-                header("Location: informasi-penginapan.php"); // Mengarahkan ke halaman tanpa parameter pencarian
-                exit();
-            }
-            if (isset($_GET['cari'])) {
-                $searchTerm = $conn->real_escape_string($_GET['cari']);
-                $sql = "SELECT * FROM informasi_penginapan WHERE nama_penginapan LIKE '%$searchTerm%'";
-            } else {
-                $sql = "SELECT * FROM informasi_penginapan ORDER BY id_penginapan DESC";
-            }
-            $q2 = mysqli_query($conn, $sql);
-            $urut = 1;
-            while ($r2 = mysqli_fetch_array($q2)) {
-                $id = $r2['id_penginapan'];
-                $nama = $r2['nama_penginapan'];
-                $lokasi = $r2['lokasi'];
-                $deskripsi = $r2['deskripsi'];
-                ?>
-                <tr>
-                    <th scope="row">
-                        <?php echo $urut++ ?>
-                    </th>
-                    <!-- <td>Mark</td> -->
-                    <td scope="row">
-                        <?php echo $nama ?>
-                    </td>
-                    <td scope="row">
-                        <?php echo $lokasi ?>
-                    </td>
-                    <td scope="row">
-                        <?php echo $deskripsi ?>
-                    </td>
-                    <td scope="row">
-                    <div class="d-inline-flex">
-                    <a href="edit-penginapan.php?id_penginapan=<?php echo $id ?>">
-                    <div class="btn btn-primary mr-1 " name="edit">Edit</div></a>
-                    <a href="hapusdatapenginapan.php?id_penginapan=<?php echo $id ?>" onclick="
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Lokasi</th>
+                            <th scope="col">Linkmaps</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (isset($_GET['reset'])) {
+                            // Pengguna menekan tombol "Hapus Pencarian"
+                            header("Location: informasi-penginapan.php"); // Mengarahkan ke halaman tanpa parameter pencarian
+                            exit();
+                        }
+                        $jumlahDataPerHalaman = 1;
+
+                        // Perform the query to get the total number of rows
+                        $queryCount = mysqli_query($conn, "SELECT COUNT(*) as total FROM informasi_penginapan");
+                        $countResult = mysqli_fetch_assoc($queryCount);
+                        $jumlahData = $countResult['total'];
+
+                        // Calculate the total number of pages
+                        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+
+                        // Get the current page
+                        $page = (isset($_GET["page"])) ? $_GET["page"] : 1;
+
+                        // Calculate the starting data index for the current page
+                        $awalData = ($page - 1) * $jumlahDataPerHalaman;
+
+                        if (isset($_GET['cari'])) {
+                            $searchTerm = $conn->real_escape_string($_GET['cari']);
+                            $sql = "SELECT * FROM informasi_penginapan WHERE nama_penginapan LIKE '%$searchTerm%' limit $awalData,$jumlahDataPerHalaman";
+                        } else {
+                            $sql = "SELECT * FROM informasi_penginapan ORDER BY id_penginapan DESC limit $awalData,$jumlahDataPerHalaman";
+                        }
+                        $q2 = mysqli_query($conn, $sql);
+                        $urut = 1;
+                        while ($r2 = mysqli_fetch_array($q2)) {
+                            $id = $r2['id_penginapan'];
+                            $nama = $r2['nama_penginapan'];
+                            $lokasi = $r2['lokasi'];
+                            $linkmaps = $r2['linkmaps'];
+                            $deskripsi = $r2['deskripsi'];
+                            ?>
+                            <tr>
+                                <th scope="row">
+                                    <?php echo $urut++ ?>
+                                </th>
+                                <!-- <td>Mark</td> -->
+                                <td scope="row">
+                                    <?php echo $nama ?>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $lokasi ?>
+                                </td>
+                                <td scope="row">
+                                    <a href="<?php echo $linkmaps ?>">
+                                        <?php echo $linkmaps ?>
+                                    </a>
+                                </td>
+                                <td scope="row">
+                                    <?php echo $deskripsi ?>
+                                </td>
+                                <td scope="row">
+                                    <div class="d-inline-flex">
+                                        <a href="edit-penginapan.php?id_penginapan=<?php echo $id ?>">
+                                            <div class="btn btn-primary mr-1 " name="edit">Edit</div>
+                                        </a>
+                                        <a href="hapusdatapenginapan.php?id_penginapan=<?php echo $id ?>" onclick="
                 return confirm ('apakah anda yakin ingin menghapusnya')">
-                    <div class="btn btn-danger" name="delete">Hapus</div></a>
-                  </div>
-                    </td>
-                </tr>
-                <?php
-            }
-                
-                  
-                
-              
-              ?>
-            </tbody>
-          </table>
-          </div>
+                                            <div class="btn btn-danger" name="delete">Hapus</div>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <!-- Pagination code -->
+                <ul class='pagination'>
+                    <!-- Previous page link -->
+                    <?php
+                    if ($page > 1) {
+                        echo "<li class='page-item'><a class='page-link' href='informasi-penginapan.php?page=" . ($page - 1) . "'>&laquo; Previous</a></li>";
+                    }
+
+                    // Numbered pagination links
+                    for ($i = 1; $i <= $jumlahHalaman; $i++) {
+                        echo "<li class='page-item " . (($page == $i) ? 'active' : '') . "'><a class='page-link' href='informasi-penginapan.php?page=$i'>$i</a></li>";
+                    }
+
+                    // Next page link
+                    if ($page < $jumlahHalaman) {
+                        echo "<li class='page-item'><a class='page-link' href='informasi-penginapan.php?page=" . ($page + 1) . "'>Next &raquo;</a></li>";
+                    }
+                    ?>
+                </ul>
             </div>
-        
+        </div>
+
         <!--**********************************
             Content body end
         ***********************************-->
-<div class=""></div>
+        <div class=""></div>
 
         <!--**********************************
             Footer start
@@ -263,7 +301,7 @@ if(isset($_SESSION["deletionstatus"])) {
            Support ticket button end
         ***********************************-->
 
-        
+
     </div>
     <!--**********************************
         Main wrapper end
@@ -276,7 +314,7 @@ if(isset($_SESSION["deletionstatus"])) {
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
-    
+
 
 </body>
 

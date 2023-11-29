@@ -25,9 +25,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 if(isset($_POST["simpan"])) {
     $nama_kuliner = $_POST['nama_kuliner'];
     $lokasi = $_POST['lokasi'];
+    $linkmaps = $_POST['linkmaps'];
     $deskripsi = $_POST['deskripsi'];
 
-    $sqlquerySimpan = "UPDATE `informasi_kuliner` SET `nama_kuliner`='$nama_kuliner',`id_wisata`='2',`deskripsi`='$deskripsi',`lokasi`='$lokasi' WHERE id_kuliner='$id'";
+    $sqlquerySimpan = "UPDATE `informasi_kuliner` SET `nama_kuliner`='$nama_kuliner',`id_wisata`='2',`deskripsi`='$deskripsi',`lokasi`='$lokasi',`linkmaps`='$linkmaps' WHERE id_kuliner='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
 
     if($result) {
@@ -147,6 +148,10 @@ if(isset($_POST["simpan"])) {
         <div class="mb-3">
         <label for="lokasi" class="form-label">Lokasi</label>
         <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?= $rows[0]["lokasi"];?>">
+        </div>
+        <div class="mb-3">
+        <label for="linkmaps" class="form-label">Linkmaps</label>
+        <input type="text" class="form-control" id="linkmaps" name="linkmaps" value="<?= $rows[0]["linkmaps"];?>">
         </div>
         <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>

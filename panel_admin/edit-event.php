@@ -146,6 +146,21 @@ if (isset($_POST["simpan"])) {
                             value="<?= $rows[0]["nama_event"]; ?>" Required>
                     </div>
                     <div class="mb-3">
+                        <!-- <label for="exampleFormControlInput1" class="form-label">Hari</label>
+                  <input type="text" class="form-control" id="hari" placeholder="Masukan Hari" name="hari" Required> -->
+                        <label for="hari" class="form-label">Pilih Hari:</label>
+                        <select id="hari" name="hari">
+                            <option value="senin" <?php echo ($rows[0]['hari'] == 'senin') ? 'selected' : '' ?> >Senin</option>
+                            <option value="selasa" <?php echo ($rows[0]['hari'] == 'selasa') ? 'selected' : '' ?> >Selasa</option>
+                            <option value="rabu" <?php echo ($rows[0]['hari'] == 'rabu') ? 'selected' : '' ?> >Rabu</option>
+                            <option value="kamis" <?php echo ($rows[0]['hari'] == 'kamis') ? 'selected' : '' ?>>Kamis</option>
+                            <option value="jumat" <?php echo ($rows[0]['hari'] == 'jumat') ? 'selected' : '' ?>>Jumat</option>
+                            <option value="sabtu" <?php echo ($rows[0]['hari'] == 'sabtu') ? 'selected' : '' ?>>Sabtu</option>
+                            <option value="minggu" <?php echo ($rows[0]['hari'] == 'minggu') ? 'selected' : '' ?>>Minggu</option>
+                        </select>
+                        <!-- value="<?= $rows[0]["hari"]; ?>" Required> -->
+                    </div>
+                    <div class="mb-3">
                         <label for="jadwal" class="form-label">Jadwal</label>
                         <input type="datetime-local" class="form-control" id="jadwal" name="jadwal"
                             value="<?= $rows[0]["jadwal"]; ?>" Required>
@@ -160,10 +175,10 @@ if (isset($_POST["simpan"])) {
                         <textarea class="form-control" id="deskripsi" rows="3"
                             name="deskripsi" Required><?= $rows[0]["deskripsi"]; ?></textarea>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="hari" class="form-label">Hari</label>
                         <input type="text" class="form-control" id="hari" name="hari" value="<?= $rows[0]["hari"]; ?>" Required>
-                    </div>
+                    </div> -->
                     <div class="col-12">
                         <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
                     </div>

@@ -59,7 +59,7 @@ if (isset($_SESSION["deletionstatus"])) {
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link href="./css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/label.css">
+    <link rel="stylesheet" href="css/tabel.css">
 
 </head>
 
@@ -181,13 +181,12 @@ if (isset($_SESSION["deletionstatus"])) {
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <!-- <th scope="col">Gambar</th> -->
-                            <th scope="col">Nama Wisata</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">Deskripsi</th>
                             <th scope="col">Alamat</th>
-                            <th scope="col">Harga Tiket</th>
+                            <th scope="col">Harga</th>
                             <th scope="col">Jadwal</th>
-                            <th scope="col">Gambar</th>
+                            <!-- <th scope="col">Gambar</th> -->
                             <th scope="col">Coordinate</th>
                             <th scope="col">Link Maps</th>
                             <th scope="col">Action</th>
@@ -200,16 +199,31 @@ if (isset($_SESSION["deletionstatus"])) {
                             header("Location: informasi-wisata.php"); // Mengarahkan ke halaman tanpa parameter pencarian
                             exit();
                         }
+                        $jumlahDataPerHalaman = 2;
+
+                        // Perform the query to get the total number of rows
+                        $queryCount = mysqli_query($conn, "SELECT COUNT(*) as total FROM informasi_wisata");
+                        $countResult = mysqli_fetch_assoc($queryCount);
+                        $jumlahData = $countResult['total'];
+
+                        // Calculate the total number of pages
+                        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+
+                        // Get the current page
+                        $page = (isset($_GET["page"])) ? $_GET["page"] : 1;
+
+                        // Calculate the starting data index for the current page
+                        $awalData = ($page - 1) * $jumlahDataPerHalaman;
 
                         if (isset($_GET['cari'])) {
                             $searchTerm = $conn->real_escape_string($_GET['cari']);
-                            $sql = "SELECT * FROM informasi_wisata WHERE nama_wisata LIKE '%$searchTerm%'";
+                            $sql = "SELECT * FROM informasi_wisata WHERE nama_wisata LIKE '%$searchTerm%' limit $awalData,$jumlahDataPerHalaman";
                         } else {
-                            $sql = "SELECT * FROM informasi_wisata ORDER BY id_wisata DESC";
+                            $sql = "SELECT * FROM informasi_wisata ORDER BY id_wisata DESC limit $awalData,$jumlahDataPerHalaman";
                         }
 
                         $q2 = mysqli_query($conn, $sql);
-                        $urut = 1;
+                        $urut = 1 + $awalData;
                         while ($r2 = mysqli_fetch_array($q2)) {
                             $id = $r2['id_wisata'];
                             $nama = $r2['nama_wisata'];
@@ -241,8 +255,8 @@ if (isset($_SESSION["deletionstatus"])) {
                                 <td scope="row">
                                     <?php echo $jadwal ?>
                                 </td>
-                                <td scope="row">
-                                    <?php echo $gambar ?>
+                                <!-- <td scope="row">
+                                    <?php echo $gambar ?> -->
                                 </td>
                                 <td scope="row">
                                     <?php echo $koordinat ?>
@@ -267,6 +281,25 @@ if (isset($_SESSION["deletionstatus"])) {
                         ?>
                     </tbody>
                 </table>
+                <!-- Pagination code -->
+                <ul class='pagination'>
+                    <!-- Previous page link -->
+                    <?php
+                    if ($page > 1) {
+                        echo "<li class='page-item'><a class='page-link' href='informasi-wisata.php?page=" . ($page - 1) . "'>&laquo; Previous</a></li>";
+                    }
+
+                    // Numbered pagination links
+                    for ($i = 1; $i <= $jumlahHalaman; $i++) {
+                        echo "<li class='page-item " . (($page == $i) ? 'active' : '') . "'><a class='page-link' href='informasi-wisata.php?page=$i'>$i</a></li>";
+                    }
+
+                    // Next page link
+                    if ($page < $jumlahHalaman) {
+                        echo "<li class='page-item'><a class='page-link' href='informasi-wisata.php?page=" . ($page + 1) . "'>Next &raquo;</a></li>";
+                    }
+                    ?>
+                </ul>
 
             </div>
         </div>

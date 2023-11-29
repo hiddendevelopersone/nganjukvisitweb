@@ -1,8 +1,9 @@
 <?php
 session_start();
 include('../koneksi.php');
+// require '../functions.php';
 
-$sqlquery = "SELECT * FROM informasi_kuliner";
+$sqlquery = "SELECT * FROM informasi_wisata";
 $result = $conn->query($sqlquery);
 
 $rows = [];
@@ -19,6 +20,7 @@ if (isset($_SESSION["notifikasitambah"])) {
     }
     unset($_SESSION["notifikasitambah"]);
 }
+
 if (isset($_SESSION["notifikasiedit"])) {
     if ($_SESSION["notifikasiedit"] === "1") {
         echo "<script>alert('Berhasil merubah data')</script>";
@@ -29,6 +31,7 @@ if (isset($_SESSION["notifikasiedit"])) {
     }
     unset($_SESSION["notifikasiedit"]);
 }
+
 if (isset($_SESSION["deletionstatus"])) {
     if ($_SESSION["deletionstatus"] === "1") {
         echo "<script>alert('Berhasil menghapus data')</script>";
@@ -39,16 +42,18 @@ if (isset($_SESSION["deletionstatus"])) {
     }
     unset($_SESSION["deletionstatus"]);
 }
-?>
+// if (isset($_POST["cari"])) {
+//     $informasi_wisata = cari($_POST["keyword"]);
+// }
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link href="./css/style.css" rel="stylesheet">
@@ -57,7 +62,6 @@ if (isset($_SESSION["deletionstatus"])) {
 </head>
 
 <body>
-
     <!--*******************
         Preloader start
     ********************-->
@@ -114,36 +118,37 @@ if (isset($_SESSION["deletionstatus"])) {
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Halo,selamat datang!</h4>
-                            <p class="mb-0">di Informasi Kuliner</p>
+                            <p class="mb-0">di Ulasan Wisata</p>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Data</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Informasi</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Kuliner</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Data Tambahan</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Ulasan</a></li>
+                            <!-- <li class="breadcrumb-item active"><a href="javascript:void(0)">Wisata</a></li> -->
                         </ol>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row" style="display: flex;">
                     <h5 class="judul-tambahdata">Tambah Data</h5>
-                    <a href="tambah-kuliner.php">
+                    <a href="tambah-wisata.php">
                         <img src="./images/OIP.jpg" class="img-tambah" alt="Ikon">
-                    </a>
-                    <!-- <form action="" method="GET">
+                    </a> -->
+
+                    <!-- <form class="" action="" method="POST">
                         <input type="text" name="keyword" placeholder="Masukkan Pencarian" autocomplete="off" autofocus>
                         <button type="submit" name="cari">Cari</button>
                     </form> -->
-                </div>
+                <!-- </div> -->
                 <br>
-                <form action="informasi-kuliner.php" method="GET">
+                <form action="ulasan.php" method="GET">
                     <div class="form-group" style="display: flex; gap: 10px;">
                         <input type="text" name="cari" class="form-control" id="searchInput"
-                            style="width: 50%; display: flex-end;" placeholder="Cari kuliner"
+                            style="width: 50%; display: flex-end;" placeholder="Cari Wisata"
                             value="<?php echo isset($_GET['cari']) ? $_GET['cari'] : ''; ?>">
                         <button type="submit" class="btn btn-info" id="searchButton">Cari</button>
                         <?php if (isset($_GET['cari'])): ?>
-                            <a href="informasi-kuliner.php" class="btn btn-secondary">Hapus Pencarian</a>
+                            <a href="ulasan.php" class="btn btn-secondary">Hapus Pencarian</a>
                         <?php endif; ?>
                     </div>
                 </form>
@@ -164,32 +169,32 @@ if (isset($_SESSION["deletionstatus"])) {
 
                     document.getElementById('searchInput').addEventListener('click', function () {
                         var searchInput = document.getElementById('searchInput');
-                        searchInput.placeholder = 'Cari kuliner'; // Mengembalikan placeholder ke default saat input diklik
+                        searchInput.placeholder = 'Cari Wisata'; // Mengembalikan placeholder ke default saat input diklik
                         searchInput.style.borderColor = ''; // Mengembalikan warna border ke default saat input diklik
                     });
                 </script>
+
                 <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Lokasi</th>
-                            <th scope="col">Linkmaps</th>
-                            <th scope="col">Deskripsi</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Link Maps</th>
+                            <th scope="col">Detail Ulasan</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         if (isset($_GET['reset'])) {
                             // Pengguna menekan tombol "Hapus Pencarian"
-                            header("Location: informasi-kuliner.php"); // Mengarahkan ke halaman tanpa parameter pencarian
+                            header("Location: informasi-wisata.php"); // Mengarahkan ke halaman tanpa parameter pencarian
                             exit();
                         }
-                        $jumlahDataPerHalaman = 1;
+                        $jumlahDataPerHalaman = 5;
 
                         // Perform the query to get the total number of rows
-                        $queryCount = mysqli_query($conn, "SELECT COUNT(*) as total FROM informasi_kuliner");
+                        $queryCount = mysqli_query($conn, "SELECT COUNT(*) as total FROM informasi_wisata");
                         $countResult = mysqli_fetch_assoc($queryCount);
                         $jumlahData = $countResult['total'];
 
@@ -204,46 +209,44 @@ if (isset($_SESSION["deletionstatus"])) {
 
                         if (isset($_GET['cari'])) {
                             $searchTerm = $conn->real_escape_string($_GET['cari']);
-                            $sql = "SELECT * FROM informasi_kuliner WHERE nama_kuliner LIKE '%$searchTerm%' limit $awalData,$jumlahDataPerHalaman";
+                            $sql = "SELECT * FROM informasi_wisata WHERE nama_wisata LIKE '%$searchTerm%' limit $awalData,$jumlahDataPerHalaman";
                         } else {
-                            $sql = "SELECT * FROM informasi_kuliner ORDER BY id_kuliner DESC limit $awalData,$jumlahDataPerHalaman";
+                            $sql = "SELECT * FROM informasi_wisata ORDER BY id_wisata DESC limit $awalData,$jumlahDataPerHalaman";
                         }
+
                         $q2 = mysqli_query($conn, $sql);
-                        $urut = 1;
+                        $urut = 1 + $awalData;
                         while ($r2 = mysqli_fetch_array($q2)) {
-                            $id = $r2['id_kuliner'];
-                            $nama = $r2['nama_kuliner'];
-                            $lokasi = $r2['lokasi'];
-                            $linkmaps = $r2['linkmaps'];
+                            $id = $r2['id_wisata'];
+                            $nama = $r2['nama_wisata'];
                             $deskripsi = $r2['deskripsi'];
+                            $alamat = $r2['alamat'];
+                            $harga = $r2['harga_tiket'];
+                            $jadwal = $r2['jadwal'];
+                            $gambar = $r2['gambar'];
+                            $koordinat = $r2['coordinate'];
+                            $link = $r2['linkmaps'];
                             ?>
                             <tr>
                                 <th scope="row">
                                     <?php echo $urut++ ?>
                                 </th>
-                                <!-- <td>Mark</td> -->
                                 <td scope="row">
                                     <?php echo $nama ?>
                                 </td>
                                 <td scope="row">
-                                    <?php echo $lokasi ?>
+                                    <?php echo $alamat ?>
                                 </td>
                                 <td scope="row">
-                                <a href="<?php echo $linkmaps ?>"><?php echo $linkmaps ?></a>
+                                   <a href="<?php echo $link ?>">
+                                        <?php echo $link ?>
+                                    </a>
                                 </td>
                                 <td scope="row">
-                                    <?php echo $deskripsi ?>
-                                </td>
-                                <td scope="row">
-                                    <div class="d-inline-flex">
-                                        <a href="edit-kuliner.php?id_kuliner=<?php echo $id ?>">
-                                            <div class="btn btn-primary mr-1 " name="edit">Edit</div>
-                                        </a>
-                                        <a href="hapusdatakuliner.php?id_kuliner=<?php echo $id ?>" onclick="
-                return confirm ('apakah anda yakin ingin menghapusnya')">
-                                            <div class="btn btn-danger" name="delete">Hapus</div>
-                                        </a>
-                                    </div>
+                                <a href="detail-ulasan.php?id_wisata=<?php echo $id ?>">
+    <div class="btn btn-primary mr-1" name="lihat">Lihat</div>
+</a>
+
                                 </td>
                             </tr>
                             <?php
@@ -256,26 +259,27 @@ if (isset($_SESSION["deletionstatus"])) {
                     <!-- Previous page link -->
                     <?php
                     if ($page > 1) {
-                        echo "<li class='page-item'><a class='page-link' href='informasi-kuliner.php?page=" . ($page - 1) . "'>&laquo; Previous</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='ulasan.php?page=" . ($page - 1) . "'>&laquo; Previous</a></li>";
                     }
 
                     // Numbered pagination links
                     for ($i = 1; $i <= $jumlahHalaman; $i++) {
-                        echo "<li class='page-item " . (($page == $i) ? 'active' : '') . "'><a class='page-link' href='informasi-kuliner.php?page=$i'>$i</a></li>";
+                        echo "<li class='page-item " . (($page == $i) ? 'active' : '') . "'><a class='page-link' href='ulasan.php?page=$i'>$i</a></li>";
                     }
 
                     // Next page link
                     if ($page < $jumlahHalaman) {
-                        echo "<li class='page-item'><a class='page-link' href='informasi-kuliner.php?page=" . ($page + 1) . "'>Next &raquo;</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='ulasan.php?page=" . ($page + 1) . "'>Next &raquo;</a></li>";
                     }
                     ?>
                 </ul>
+
             </div>
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
-
+        <div class=""></div>
 
         <!--**********************************
             Footer start
@@ -307,12 +311,9 @@ if (isset($_SESSION["deletionstatus"])) {
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
-
-
 </body>
 
 </html>
