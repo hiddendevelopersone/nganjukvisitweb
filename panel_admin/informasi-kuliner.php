@@ -39,6 +39,7 @@ if (isset($_SESSION["deletionstatus"])) {
     }
     unset($_SESSION["deletionstatus"]);
 }
+
 ?>
 
 <!DOCTYPE html>

@@ -11,6 +11,7 @@ $pengguna1 = startquery($sqlquery1);
 $pengguna2 = startquery($sqlquery2);
 $pengguna3 = startquery($sqlquery3);
 
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">

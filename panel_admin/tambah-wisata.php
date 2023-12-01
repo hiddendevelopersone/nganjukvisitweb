@@ -100,6 +100,7 @@ function upload() {
     move_uploaded_file($tmpName, '../resource_mobile/' . $filenames);
     return $filenames;
 }
+$conn->close();
 ?>
 
 

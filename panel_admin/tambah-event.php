@@ -22,11 +22,12 @@ if (isset($_POST['simpan'])) {
     $lokasi = $_POST['lokasi'];
     $deskripsi = $_POST['deskripsi'];
     $hari = $_POST['hari'];
+    $idWisata = $_POST['id_wisata'];
     $gambar = upload();
     // echo json_encode($_POST);
     // exit();
     if ($nama_event && $jadwal && $lokasi && $deskripsi && $hari) {
-        $sql1 = "insert into event(nama_event,jadwal,lokasi,deskripsi,id_wisata,hari,gambar) values ('$nama_event','$jadwal','$lokasi','$deskripsi','2','$hari','$gambar')";
+        $sql1 = "insert into event(nama_event,jadwal,lokasi,deskripsi,id_wisata,hari,gambar) values ('$nama_event','$jadwal','$lokasi','$deskripsi','$idWisata','$hari','$gambar')";
         $q1 = mysqli_query($conn, $sql1);
         if ($q1) {
             $_SESSION["notifikasitambah"] = "1";
@@ -98,6 +99,15 @@ function upload() {
     move_uploaded_file($tmpName, '../resource_mobile/' . $filenames);
     return $filenames;
 }
+// get id wisata
+$queryget = "SELECT * FROM informasi_wisata";
+$result = $conn->query($queryget);
+
+if (!$result) {
+    die("Query error: " . $conn->error);
+}
+
+$conn->close();
 ?>
 
 
@@ -206,6 +216,17 @@ function upload() {
                     <label for="formFile" class="form-label">Default file input example</label>
                     <input class="form-control" type="file" id="gambar" name="gambar" required>
                 </div>
+                <div class="mb-3">
+                <label for="id_wisata" class="form-label">Pilih ID Wisata:</label>
+                <select name="id_wisata" id="id_wisata">
+                    <option value="none">(None)</option>
+                    <?php
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['id_wisata'] . "'>" . $row['nama_wisata'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
                     <div class="col-12">
                         <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
                     </div>

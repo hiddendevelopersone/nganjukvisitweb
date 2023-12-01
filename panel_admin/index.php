@@ -13,6 +13,8 @@ $count3 = mysqli_num_rows($get3);
 
 $get4 = mysqli_query($conn,"SELECT * FROM informasi_kuliner");
 $count4 = mysqli_num_rows($get4);
+
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -2,28 +2,29 @@
 session_start();
 include('../koneksi.php');
 
-$sqlquery = "SELECT * FROM informasi_penginapan";
-$result = $conn->query($sqlquery);
+// $sqlquery = "SELECT * FROM informasi_kuliner";
+// $result = $conn->query($sqlquery);
 
-$rows = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $rows[] = $row;
-}
-$nama_kuliner = "";
-$lokasi = "";
-$linkmaps = "";
-$deskripsi = "";
-$error;
-$success;
+// $rows = [];
+// while ($row = mysqli_fetch_assoc($result)) {
+//     $rows[] = $row;
+// }
+// $nama_kuliner = "";
+// $lokasi = "";
+// $linkmaps = "";
+// $deskripsi = "";
+// $error;
+// $success;
 if (isset($_POST['simpan'])) {
     $nama_kuliner = $_POST['nama_kuliner'];
     $lokasi = $_POST['lokasi'];
     $linkmaps = $_POST['linkmaps'];
     $deskripsi = $_POST['deskripsi'];
+    $idWisata = $_POST['id_wisata'];
     $gambar = upload();
 
         if ($nama_kuliner && $lokasi && $deskripsi) {
-        $sql1 = "insert into informasi_kuliner(nama_kuliner,lokasi,linkmaps,id_wisata,deskripsi,gambar) values ('$nama_kuliner','$lokasi','$linkmaps','2','$deskripsi','$gambar')";
+        $sql1 = "insert into informasi_kuliner(nama_kuliner,lokasi,linkmaps,id_wisata,deskripsi,gambar) values ('$nama_kuliner','$lokasi','$linkmaps','$idWisata','$deskripsi','$gambar')";
         $q1 = mysqli_query($conn, $sql1);
         if ($q1) {
             $_SESSION["notifikasitambah"] = "1";
@@ -95,6 +96,15 @@ function upload() {
     move_uploaded_file($tmpName, '../resource_mobile/' . $filenames);
     return $filenames;
 }
+// get id wisata
+$queryget = "SELECT * FROM informasi_wisata";
+$result = $conn->query($queryget);
+
+if (!$result) {
+    die("Query error: " . $conn->error);
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -185,6 +195,17 @@ function upload() {
                     <label for="formFile" class="form-label">Default file input example</label>
                     <input class="form-control" type="file" id="gambar" name="gambar" required>
                 </div>
+                <div class="mb-3">
+                <label for="id_wisata" class="form-label">Pilih ID Wisata:</label>
+                <select name="id_wisata" id="id_wisata">
+                    <option value="none">(None)</option>
+                    <?php
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['id_wisata'] . "'>" . $row['nama_wisata'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
                 <div class="col-12">
                     <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
                 </div>

@@ -30,7 +30,7 @@ if(isset($_POST["simpan"])) {
     $coordinate = $_POST['coordinate'];
     $linkmaps = $_POST['linkmaps'];
     $deskripsi = $_POST['deskripsi'];
-    $gambar = "pngjpg";
+    $gambar = upload();
 
     $sqlquerySimpan = "UPDATE `informasi_wisata` SET `nama_wisata`='$nama_wisata',`id_user`='U1000001',`deskripsi`='$deskripsi',`alamat`='$alamat',`harga_tiket`='$harga_tiket',`jadwal`='$jadwal',`gambar`='$gambar',`coordinate`='$coordinate',`linkmaps`='$linkmaps' WHERE id_wisata='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
@@ -47,7 +47,64 @@ if(isset($_POST["simpan"])) {
     $conn->close();
 
 }
+function upload() {
+    $phpFileUploadErrors = array(
+        // 0 => 'There is no error, the file uploaded with success',
+        1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+        2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+        3 => 'The uploaded file was only partially uploaded',
+        4 => 'No file was uploaded',
+        6 => 'Missing a temporary folder',
+        7 => 'Failed to write file to disk.',
+        8 => 'A PHP extension stopped the file upload.',
+    );
 
+    $filenames = $_FILES["gambar"]["name"];
+    $filesize = $_FILES["gambar"]["size"];
+    $errcode = $_FILES["gambar"]["error"];
+    $tmpName = $_FILES["gambar"]["tmp_name"];
+
+    // error code
+    // if($errcode === 4){
+    //     echo "<script> 
+    //         alert('$phpFileUploadErrors[4]')
+    //         </script>";
+    //     return false;
+    // }
+
+    // error code checker alternate
+    if( array_key_exists($errcode, $phpFileUploadErrors) ){
+            echo "<script> 
+                alert('$phpFileUploadErrors[$errcode]')
+                </script>";
+            return false;
+        }
+        
+        // size handler
+        if ($filesize >= 1000000) {
+            echo "<script> 
+                alert('ukuran file tidak boleh lebih dari 1MB')
+                </script>";
+            return false;            
+        }
+        
+        // validate image datatype
+        $datatypeAllowed = ['jpg', 'jpeg', 'png'];
+        $fileExtention = explode('.', $filenames);
+        $fileExtention = strtolower(end($fileExtention));
+
+        if( !in_array($fileExtention, $datatypeAllowed) ):
+            echo "<script> 
+                alert('file yang anda masukkan tidak sesuai')
+                </script>";
+            return false;
+        endif;    
+    
+    // file pass the selection, next ready to upload
+    move_uploaded_file($tmpName, '../resource_mobile/' . $filenames);
+    return $filenames;
+}
+$conn->close();
 // echo $rows["nama_wisata"];
 
 
@@ -141,7 +198,7 @@ if(isset($_POST["simpan"])) {
         </div> -->
         <div id="body" class="content-body">
             <div class="container">
-                <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+                <form action="" method="post" enctype="multipart/form-data" autocomplete="off" enctype="multipart/form-data">
               
                 <div class="mb-3">
         <label for="nama_wisata" class="form-label">Nama Wisata</label>
@@ -173,7 +230,7 @@ if(isset($_POST["simpan"])) {
                 </div>
                 <div class="mb-3">
                     <label for="gambar" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="gambar" value="<?=$row[0]["gambar"];?>" >
+                    <input class="form-control" type="file" id="gambar" name="gambar" value="<?=$row[0]["gambar"];?>" >
                 </div>
                 <div class="col-12">
                     <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">

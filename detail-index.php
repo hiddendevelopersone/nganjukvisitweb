@@ -65,10 +65,6 @@
   $conn->close();
   ?>
 
-  <div class="testred">
-    <p>hhhhhhhh</p>
-  </div>
-
   </div>
 </body>
 </html>

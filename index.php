@@ -95,18 +95,19 @@
 
       <!--Awal carsoul-->
       <?php
+      include "koneksi.php";
       // Assuming you have a database connection
-      $dbhost = "localhost";
-      $dbuser = "root";
-      $dbpass = "";
-      $dbname = "nganjukvisit";
+      // $dbhost = "localhost";
+      // $dbuser = "root";
+      // $dbpass = "";
+      // $dbname = "nganjukvisit";
 
 
-      $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+      // $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-      if (!$conn) {
-        die("error : " . mysqli_error($conn));
-      }
+      // if (!$conn) {
+      //   die("error : " . mysqli_error($conn));
+      // }
 
       // Fetch data from the database
       $sql = "SELECT * FROM informasi_wisata LIMIT 3";
@@ -169,21 +170,22 @@
 
       <!--Awal carsoul-->
       <?php
+      include "koneksi.php";
       // Assuming you have a database connection
-      $dbhost = "localhost";
-      $dbuser = "root";
-      $dbpass = "";
-      $dbname = "nganjukvisit";
+      // $dbhost = "localhost";
+      // $dbuser = "root";
+      // $dbpass = "";
+      // $dbname = "nganjukvisit";
 
 
-      $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+      // $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-      if (!$conn) {
-        die("error : " . mysqli_error($conn));
-      }
+      // if (!$conn) {
+      //   die("error : " . mysqli_error($conn));
+      // }
 
       // Fetch data from the database
-      $sql = "SELECT * FROM informasi_kuliner";
+      $sql = "SELECT * FROM informasi_kuliner Limit 3";
       $result = $conn->query($sql);
       ?>
 
@@ -276,21 +278,22 @@
         <!--Penginapan-->
 
         <?php
+        include "koneksi.php";
         // Assuming you have a database connection
-        $dbhost = "localhost";
-        $dbuser = "root";
-        $dbpass = "";
-        $dbname = "nganjukvisit";
+        // $dbhost = "localhost";
+        // $dbuser = "root";
+        // $dbpass = "";
+        // $dbname = "nganjukvisit";
 
-        // Create connection
-        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+        // // Create connection
+        // $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-        if (!$conn) {
-          die("error : " . mysqli_error($conn));
-        }
+        // if (!$conn) {
+        //   die("error : " . mysqli_error($conn));
+        // }
 
         // Assuming you have a query to retrieve data from the database
-        $sql = "SELECT * FROM informasi_penginapan";
+        $sql = "SELECT * FROM informasi_penginapan limit 3";
         $result = $conn->query($sql);
 
         // Assuming you want to display up to 4 rows of data
@@ -339,21 +342,22 @@
       <!-- Event -->
       <!--Awal carsoul-->
       <?php
+      include "koneksi.php";
       // Assuming you have a database connection
-      $dbhost = "localhost";
-      $dbuser = "root";
-      $dbpass = "";
-      $dbname = "nganjukvisit";
+      // $dbhost = "localhost";
+      // $dbuser = "root";
+      // $dbpass = "";
+      // $dbname = "nganjukvisit";
 
 
-      $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+      // $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-      if (!$conn) {
-        die("error : " . mysqli_error($conn));
-      }
+      // if (!$conn) {
+      //   die("error : " . mysqli_error($conn));
+      // }
 
       // Fetch data from the database
-      $sql = "SELECT * FROM event";
+      $sql = "SELECT * FROM event limit 3";
       $result = $conn->query($sql);
       ?>
 

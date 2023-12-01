@@ -16,7 +16,7 @@
                                     <i class="icon-user"></i>
                                     <span class="ml-2">Profile </span>
                                 </a>
-                                <a href="/webnganjukvisit/ogout.php?logout=true" onclick="return confirm('Apakah Anda yakin ingin logout?')"
+                                <a href="/webnganjukvisit/logout.php?logout=true" onclick="return confirm('Apakah Anda yakin ingin logout?')"
                                     class="dropdown-item">
                                     <i class="icon-key"></i>
                                     <span class="ml-2">Logout</span>
