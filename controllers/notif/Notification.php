@@ -45,3 +45,5 @@ class Notification
         return $result;
     }
 }
+
+?>
