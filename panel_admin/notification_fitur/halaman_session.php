@@ -21,6 +21,22 @@ $conn -> close();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+    <style>
+        .custom-table{
+            width: 100%;
+            border-collapse: collapse;
+            /* word-wrap: break-word; */
+        }
+
+        th, td {
+          border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            word-wrap: break-word !important;
+        }
+    </style>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -28,53 +44,57 @@ $conn -> close();
   </head>
   <body>
     
-    <div class="container-fluid p-3">
+    <!-- <div class="container"> -->
 
-      
-      <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">nomor</th>
-                <th scope="col">id_user</th>
-                <th scope="col">device token</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            <?php
-              $no = 0;
-              while ($rows = mysqli_fetch_array($result)) {
-                $id = $rows['id_session'];
-                $iduser = $rows['id_user'];
-                $devicetoken = $rows['device_token'];
+      <div class="custom-table">
+        
+        <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">nomor</th>
+                  <th scope="col">id_user</th>
+                  <th scope="col">device token</th>
+                  <th scope="col">Aksi</th>
+              </tr>
+          </thead>
+          <tbody>
+              
+              <?php
+                $no = 0;
+                while ($rows = mysqli_fetch_array($result)) {
+                  $id = $rows['id_session'];
+                  $iduser = $rows['id_user'];
+                  $devicetoken = $rows['device_token'];
+  
+                  $no += 1;
+              ?>
+              <tr>
+                <th >
+                  <?= $no?>
+                </th>
+                <td>
+                  <?=$iduser?>
+                </td>
+                <td>
+                  <?=$devicetoken ?>
+                </td>
+                <td>
+                <a href="form_kirim.php?device_token=<?php echo $devicetoken ?>&id_user=<?php echo $iduser?>">
+                    <div class="btn btn-primary mr-1" name="edit">kirim</div>
+                </a>
+                </td>
+              </tr>
+              <?php
+                }
+              ?>
+  
+          </tbody>
+        </table>
 
-                $no += 1;
-            ?>
-            <tr>
-              <th>
-                <?= $no?>
-              </th>
-              <td>
-                <?=$iduser?>
-              </td>
-              <td>
-                <?=$devicetoken ?>
-              </td>
-              <td>
-              <a href="form_kirim.php?device_token=<?php echo $devicetoken ?>&id_user=<?php echo $iduser?>">
-                  <div class="btn btn-primary mr-1" name="edit">kirim</div>
-              </a>
-              </td>
-            </tr>
-            <?php
-              }
-            ?>
+        
+      </div>
 
-        </tbody>
-      </table>
-
-    </div>
+    <!-- </div> -->
 
 
     <!-- Optional JavaScript; choose one of the two! -->

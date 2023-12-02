@@ -28,7 +28,7 @@ if (isset($_POST["kirim"])) {
 
     if ($dataRespons['success'] == 1) {
         
-        $queryins = "INSERT INTO book VALUES ('', '$bodyNotif', '$getuserid', '', '1', NOW(), '', '')";
+        $queryins = "INSERT INTO notifikasi VALUES ('', '$titleNotif', '$bodyNotif', '$getuserid', NOW())";
         
         $resultqueryins = mysqli_query($conn, $queryins);
         

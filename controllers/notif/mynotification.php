@@ -4,7 +4,7 @@ require "../koneksi.php";
 
 $userget = $_GET["id_user"];
 
-$sqlquery = "SELECT * FROM `book` WHERE id_user = '$userget' ORDER BY id_pemesanan DESC";
+$sqlquery = "SELECT * FROM `notifikasi` WHERE id_user = '$userget' ORDER BY id_notif DESC";
 
 $result = mysqli_query($conn, $sqlquery);
 
