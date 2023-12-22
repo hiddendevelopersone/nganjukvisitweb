@@ -29,13 +29,15 @@ if (isset($_POST["simpan"])) {
     $deskripsi = $_POST['deskripsi'];
     $hari = $_POST['hari'];
 
-    $sqlquerySimpan = "UPDATE `event` SET `nama_event`='$nama_event',`id_wisata`='2',`jadwal`='$jadwal',`lokasi`='$lokasi',`deskripsi`='$deskripsi',`hari`='$hari' WHERE id_event='$id'";
+    $sqlquerySimpan = "UPDATE `event` SET `nama_event`='$nama_event',`jadwal`='$jadwal',`lokasi`='$lokasi',`deskripsi`='$deskripsi',`hari`='$hari' WHERE id_event='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
 
     if ($result) {
         $_SESSION["notifikasiedit"] = "1";
         // echo "<script>alert('Data Berhasil Disimpan')</script>";
-        header("Location: informasi-event.php");
+        // header("Location: informasi-event.php");
+        echo '<script>window.location.href = "informasi-event.php";</script>';
+            exit();
     } else {
         $_SESSION["notifikasiedit"] = "0";
         echo "<script>alert('Data Gagal Diperbarui')</script>";
@@ -146,8 +148,6 @@ if (isset($_POST["simpan"])) {
                             value="<?= $rows[0]["nama_event"]; ?>" Required>
                     </div>
                     <div class="mb-3">
-                        <!-- <label for="exampleFormControlInput1" class="form-label">Hari</label>
-                  <input type="text" class="form-control" id="hari" placeholder="Masukan Hari" name="hari" Required> -->
                         <label for="hari" class="form-label">Pilih Hari:</label>
                         <select id="hari" name="hari">
                             <option value="senin" <?php echo ($rows[0]['hari'] == 'senin') ? 'selected' : '' ?> >Senin</option>

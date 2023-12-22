@@ -29,13 +29,15 @@ if (isset($_POST["simpan"])) {
     $deskripsi = $_POST['deskripsi'];
     $telepon = $_POST['telepon'];
 
-    $sqlquerySimpan = "UPDATE `informasi_penginapan` SET `nama_penginapan`='$nama_penginapan',`id_wisata`='2',`deskripsi`='$deskripsi',`lokasi`='$lokasi',`linkmaps`='$linkmaps',`telepon`='$telepon' WHERE id_penginapan='$id'";
+    $sqlquerySimpan = "UPDATE `informasi_penginapan` SET `nama_penginapan`='$nama_penginapan',`deskripsi`='$deskripsi',`lokasi`='$lokasi',`linkmaps`='$linkmaps',`telepon`='$telepon' WHERE id_penginapan='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
 
     if ($result) {
         $_SESSION["notifikasiedit"] = "1";
-        header("Location: informasi-penginapan.php");
+        // header("Location: informasi-penginapan.php");
         // echo "<script>alert('Data Berhasil Disimpan')</script>";
+        echo '<script>window.location.href = "informasi-penginapan.php";</script>';
+            exit();
     } else {
         $_SESSION["notifikasiedit"] = "0";
         echo "<script>alert('Data Gagal Diperbarui')</script>";
@@ -44,6 +46,13 @@ if (isset($_POST["simpan"])) {
     $conn->close();
 
 
+}
+// get id wisata
+$queryget = "SELECT * FROM informasi_wisata";
+$result = $conn->query($queryget);
+
+if (!$result) {
+    die("Query error: " . $conn->error);
 }
 
 // echo $rows["nama_wisata"];

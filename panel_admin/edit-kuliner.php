@@ -28,13 +28,15 @@ if(isset($_POST["simpan"])) {
     $linkmaps = $_POST['linkmaps'];
     $deskripsi = $_POST['deskripsi'];
 
-    $sqlquerySimpan = "UPDATE `informasi_kuliner` SET `nama_kuliner`='$nama_kuliner',`id_wisata`='2',`deskripsi`='$deskripsi',`lokasi`='$lokasi',`linkmaps`='$linkmaps' WHERE id_kuliner='$id'";
+    $sqlquerySimpan = "UPDATE `informasi_kuliner` SET `nama_kuliner`='$nama_kuliner',`deskripsi`='$deskripsi',`lokasi`='$lokasi',`linkmaps`='$linkmaps' WHERE id_kuliner='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
 
     if($result) {
         $_SESSION["notifikasiedit"] = "1";
-        header("Location: informasi-kuliner.php");
+        // header("Location: informasi-kuliner.php");
         // echo "<script>alert('Data Berhasil Disimpan')</script>";
+        echo '<script>window.location.href = "informasi-kuliner.php";</script>';
+            exit();
     }else {
         $_SESSION["notifikasiedit"] = "0";
         echo "<script>alert('Data Gagal Diperbarui')</script>";

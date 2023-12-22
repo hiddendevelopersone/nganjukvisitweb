@@ -12,6 +12,11 @@ include('../koneksi.php');
 // $coordinate ="";
 // $linkmaps="";
 
+// $emailPengapluod = $_SESSION["useremail"];
+
+
+
+// get wisata
 $id = $_GET["id_wisata"];
 $sqlquery = "SELECT * FROM informasi_wisata where id_wisata = '$id'";
 
@@ -22,6 +27,20 @@ while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row;
 }
 
+
+// panggil editor
+$iduseredit = $rows[0]['id_user'];
+$rowsedit = [];
+$sqledit = "SELECT * FROM user where id_user = '$iduseredit'";
+$resultedit = mysqli_query($conn, $sqledit);
+while ($rowedit=mysqli_fetch_assoc($resultedit)){
+    $rowsedit[] = $rowedit;
+}
+$namaEditor = $rowsedit[0]['fullname'];
+
+
+
+
 if(isset($_POST["simpan"])) {
     $nama_wisata = $_POST['nama_wisata'];
     $alamat = $_POST['alamat'];
@@ -31,14 +50,23 @@ if(isset($_POST["simpan"])) {
     $linkmaps = $_POST['linkmaps'];
     $deskripsi = $_POST['deskripsi'];
     $gambar = upload();
+    $gambarLama = $rows[0]['gambar'];
 
+    if ($_FILES['gambar']['error'] === 4 ) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = upload();
+    }
+    
     $sqlquerySimpan = "UPDATE `informasi_wisata` SET `nama_wisata`='$nama_wisata',`id_user`='U1000001',`deskripsi`='$deskripsi',`alamat`='$alamat',`harga_tiket`='$harga_tiket',`jadwal`='$jadwal',`gambar`='$gambar',`coordinate`='$coordinate',`linkmaps`='$linkmaps' WHERE id_wisata='$id'";
     $result = mysqli_query($conn, $sqlquerySimpan);
 
     if($result) {
         $_SESSION["notifikasiedit"] = "1";
         // echo "<script>alert('Data Berhasil Disimpan')</script>";
-        header("Location: informasi-wisata.php");
+        // header("Location: informasi-wisata.php");
+        echo '<script>window.location.href = "informasi-wisata.php";</script>';
+            exit();
     }else {
         $_SESSION["notifikasiedit"] = "0";
         echo "<script>alert('Data Gagal Diperbarui')</script>";
@@ -198,8 +226,12 @@ $conn->close();
         </div> -->
         <div id="body" class="content-body">
             <div class="container">
+                
+            <h5 class="nama-editor">Nama Editor :</h5>
+            <div class="mb-3">
                 <form action="" method="post" enctype="multipart/form-data" autocomplete="off" enctype="multipart/form-data">
-              
+              <label class="form-label" for=""><?=$namaEditor ?></label>
+              </div>
                 <div class="mb-3">
         <label for="nama_wisata" class="form-label">Nama Wisata</label>
         <input type="text" class="form-control" id="nama_wisata" name="nama_wisata" value="<?= $rows[0]["nama_wisata"];?>">

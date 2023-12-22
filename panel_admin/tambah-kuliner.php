@@ -28,8 +28,10 @@ if (isset($_POST['simpan'])) {
         $q1 = mysqli_query($conn, $sql1);
         if ($q1) {
             $_SESSION["notifikasitambah"] = "1";
-            header("Location: informasi-kuliner.php");
+            // header("Location: informasi-kuliner.php");
             // echo "<script>alert('Berhasil memasukan data baru')</script>";
+            echo '<script>window.location.href = "informasi-kuliner.php";</script>';
+            exit();
         } else {
             $_SESSION["notifikasitambah"] = "0";
             echo "<script>alert('Gagal memasukkan data')</script>";

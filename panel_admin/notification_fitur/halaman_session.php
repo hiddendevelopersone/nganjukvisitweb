@@ -19,28 +19,16 @@ $conn -> close();
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    <style>
-        .custom-table{
-            width: 100%;
-            border-collapse: collapse;
-            /* word-wrap: break-word; */
-        }
-
-        th, td {
-          border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-            word-wrap: break-word !important;
-        }
-    </style>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Focus - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/label.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Session</title>
   </head>
   <body>
     

@@ -31,8 +31,10 @@ if (isset($_POST['simpan'])) {
         $q1 = mysqli_query($conn, $sql1);
         if ($q1) {
             $_SESSION["notifikasitambah"] = "1";
-            header("Location: informasi-event.php");
+            // header("Location: informasi-event.php");
             // echo "<script>alert('Berhasil memasukan data baru')</script>";
+            echo '<script>window.location.href = "informasi-event.php";</script>';
+            exit();
         } else {
             $_SESSION["notifikasitambah"] = "0";
             echo "<script>alert('Gagal memasukkan data')</script>";
@@ -185,8 +187,6 @@ $conn->close();
                             name="nama_event" autofocus Required>
                     </div>
                     <div class="mb-3">
-                        <!-- <label for="exampleFormControlInput1" class="form-label">Hari</label>
-                  <input type="text" class="form-control" id="hari" placeholder="Masukan Hari" name="hari" Required> -->
                         <label for="hari" class="form-label">Pilih Hari:</label>
                         <select id="hari" name="hari">
                             <option value="senin">Senin</option>

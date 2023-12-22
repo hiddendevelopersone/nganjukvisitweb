@@ -32,7 +32,7 @@
                         <li><a class="dropdown-item" href="detail-kuliner.php">Kuliner</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="#features">About Us</a></li>
+                <li class="nav-item"><a class="nav-link me-lg-3" href="about-us.php">About Us</a></li>
             </ul>
             <a href="loginnew.php">
                 <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal"

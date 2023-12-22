@@ -105,7 +105,8 @@ if(isset($_POST["daftar"])){
         else {
             mysqli_query($conn, "INSERT INTO user (id_user, level, username, fullname, alamat, no_telepon, email, kata_sandi)VALUES ('$kodee', 'ADMIN', '$username', '$fullname', '$alamat', '$notelp', '$email','$epassword')");
             $_SESSION["registersuccess"] = "1";
-            header("Location: loginnew.php");
+            // header("Location: loginnew.php");
+            echo '<script>window.location.href = "loginnew.php";</script>';
             exit();
         }
         

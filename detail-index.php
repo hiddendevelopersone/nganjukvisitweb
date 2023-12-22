@@ -1,3 +1,6 @@
+<?php
+include "koneksi.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,10 +24,6 @@
   <?php
   // Assuming you have a database connection established
 
-  $dbhost = "localhost";
-  $dbuser = "root";
-  $dbpass = "";
-  $dbname = "nganjukvisit";
   
   
   $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);

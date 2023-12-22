@@ -67,14 +67,11 @@ if (isset($_SESSION["validator"])) {
                                         <label for="userfullname">Nama</label>
                                     </div>
                                 </div>
-
                                 <div class="d-flex">
                                   <input type="text" class="form-control mr-2" id="userusername" name="userusername" placeholder="Masukkan username" required>
                                   <input type="text" class="form-control" id="userfullname" name="userfullname" placeholder="Masukkan nama" required>
                                 </div>
-
                               </div>
-
                               <div class="form-group">
                                 <div class="d-flex justify-content-between">
                                   <div class="container pl-0 mr-2">
@@ -84,23 +81,19 @@ if (isset($_SESSION["validator"])) {
                                     <label for="usernotelp">No. Telepon</label>
                                   </div>
                                 </div>
-                                
                                 <div class="d-flex">
                                   <input type="text" class="form-control mr-2" id="useremail" name="useremail" placeholder="Masukkan email" required>
                                   <input type="text" class="form-control" id="usernotelp" name="usernotelp" placeholder="Masukkan nomor telepon" required>
                                 </div>
                               </div>
-
                               <div class="form-group">
                                 <label for="useralamat">Alamat</label>
                                 <textarea class="form-control" id="useralamat" name="useralamat" placeholder="Masukkan alamat" required></textarea>
-                              </div>
-                                    
+                              </div>  
                             <div class="form-group mb-4">
                               <label for="userpwd">Password</label>
                               <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Masukkan password" required>
                             </div>
-                            
                             <div class="container pr-0">
                               <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary align-items-right" name="daftar">Daftar</button>

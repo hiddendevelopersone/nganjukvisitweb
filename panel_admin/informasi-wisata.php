@@ -186,7 +186,6 @@ if (isset($_SESSION["deletionstatus"])) {
                             <th scope="col">Alamat</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Jadwal</th>
-                            <!-- <th scope="col">Gambar</th> -->
                             <th scope="col">Coordinate</th>
                             <th scope="col">Link Maps</th>
                             <th scope="col">Action</th>
@@ -196,7 +195,8 @@ if (isset($_SESSION["deletionstatus"])) {
                         <?php
                         if (isset($_GET['reset'])) {
                             // Pengguna menekan tombol "Hapus Pencarian"
-                            header("Location: informasi-wisata.php"); // Mengarahkan ke halaman tanpa parameter pencarian
+                            // header("Location: informasi-wisata.php"); // Mengarahkan ke halaman tanpa parameter pencarian
+                            echo '<script>window.location.href = "informasi-wisata.php";</script>';
                             exit();
                         }
                         $jumlahDataPerHalaman = 2;

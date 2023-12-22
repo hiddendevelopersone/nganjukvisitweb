@@ -69,7 +69,7 @@
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-5" style="background-color: #FFFFFF;">
           <div class="menu-kategori">
-            <a href="#kuliner-populer"><img src="gambar/Kuliner.png" class="img-categori mt-3"></a>
+            <a href="#kuliner-populer"><img src="gambar/kuliner.png" class="img-categori mt-3"></a>
             <p>Kuliner</p>
           </div>
         </div>
@@ -165,12 +165,12 @@
 
       <?php
       // Close the database connection
-      $conn->close();
+      // $conn->close();
       ?>
 
       <!--Awal carsoul-->
       <?php
-      include "koneksi.php";
+     
       // Assuming you have a database connection
       // $dbhost = "localhost";
       // $dbuser = "root";
@@ -239,23 +239,16 @@
 
       <?php
       // Close the database connection
-      $conn->close();
+      // $conn->close();
       ?>
       <!--Penginapan-->
       <div class="container">
         <?php
         // Assuming you have a database connection
-        $dbhost = "localhost";
-        $dbuser = "root";
-        $dbpass = "";
-        $dbname = "nganjukvisit";
+       
 
         // Create connection
-        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-        if (!$conn) {
-          die("error : " . mysqli_error($conn));
-        }
+       
 
         // Check connection
         
@@ -273,12 +266,12 @@
           $card_text = "Please check back later";
         }
 
-        $conn->close();
+        // $conn->close();
         ?>
         <!--Penginapan-->
 
         <?php
-        include "koneksi.php";
+       
         // Assuming you have a database connection
         // $dbhost = "localhost";
         // $dbuser = "root";
@@ -327,7 +320,7 @@
         </div>
         <?php
 
-        $conn->close();
+        // $conn->close();
         ?>
 
         <div class="mt-3">
@@ -342,7 +335,7 @@
       <!-- Event -->
       <!--Awal carsoul-->
       <?php
-      include "koneksi.php";
+      
       // Assuming you have a database connection
       // $dbhost = "localhost";
       // $dbuser = "root";

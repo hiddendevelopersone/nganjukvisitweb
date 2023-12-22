@@ -184,7 +184,8 @@ if (isset($_SESSION["deletionstatus"])) {
                         <?php
                         if (isset($_GET['reset'])) {
                             // Pengguna menekan tombol "Hapus Pencarian"
-                            header("Location: informasi-kuliner.php"); // Mengarahkan ke halaman tanpa parameter pencarian
+                            // header("Location: informasi-kuliner.php"); // Mengarahkan ke halaman tanpa parameter pencarian
+                            echo '<script>window.location.href = "informasi-penginapan.php";</script>';
                             exit();
                         }
                         $jumlahDataPerHalaman = 1;

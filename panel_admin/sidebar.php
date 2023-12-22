@@ -30,6 +30,8 @@
                     <li class="nav-label">Data Tambahan</li>
                     <li><a href="./ulasan.php" aria-expanded="false"><i class="icon icon-world-2"></i><span
                         class="nav-text">Ulasan</span></a></li>
+                        <li><a href="notif.php" aria-expanded="false"><i class="icon icon-layout-25"></i><span
+                        class="nav-text">Notifikasi</span></a></li>
                     
 
                         </ul>

@@ -17,7 +17,9 @@ if($result) {
 
 $conn -> close();
 
-header("Location: informasi-event.php");
+// header("Location: informasi-event.php");
+echo '<script>window.location.href = "informasi-event.php";</script>';
+            exit();
 
 
 ?>

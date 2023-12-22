@@ -17,6 +17,19 @@ $coordinate = "";
 $linkmaps = "";
 $error;
 $success;
+
+// panggil editor
+$userEmailEdit = $_SESSION['useremail'];
+
+
+$rowsedit = [];
+$sqledit = "SELECT * FROM user where email = '$userEmailEdit'";
+$resultedit = mysqli_query($conn, $sqledit);
+while ($rowedit=mysqli_fetch_assoc($resultedit)){
+    $rowsedit[] = $rowedit;
+}
+$idUserEditor = $rowsedit[0]['id_user'];
+
 if (isset($_POST['simpan'])) {
     $nama_wisata = $_POST['nama_wisata'];
     $alamat = $_POST['alamat'];
@@ -28,12 +41,14 @@ if (isset($_POST['simpan'])) {
     $gambar = upload();
 
         if ($nama_wisata && $alamat && $harga_tiket && $jadwal && $coordinate && $linkmaps) {
-        $sql1 = "insert into informasi_wisata(nama_wisata,alamat,harga_tiket,jadwal,coordinate,linkmaps,id_user,deskripsi,gambar) values ('$nama_wisata','$alamat','$harga_tiket','$jadwal','$coordinate','$linkmaps','U1000001','$deskripsi','$gambar')";
+        $sql1 = "insert into informasi_wisata(nama_wisata,alamat,harga_tiket,jadwal,coordinate,linkmaps,id_user,deskripsi,gambar) values ('$nama_wisata','$alamat','$harga_tiket','$jadwal','$coordinate','$linkmaps','$idUserEditor','$deskripsi','$gambar')";
         $q1 = mysqli_query($conn, $sql1);
         if ($q1) {
             $_SESSION["notifikasitambah"] = "1";
-            header("Location: informasi-wisata.php");
+            // header("Location: informasi-wisata.php");
             // echo "<script>alert('Berhasil memasukan data baru')</script>";
+            echo '<script>window.location.href = "informasi-wisata.php";</script>';
+            exit();
         } else {
             $_SESSION["notifikasitambah"] = "0";
             echo "<script>alert('Gagal memasukkan data')</script>";

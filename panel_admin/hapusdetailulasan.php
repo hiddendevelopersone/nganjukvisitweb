@@ -23,7 +23,9 @@ function hapusUlasan($id_ulasan, $id_wisata, $conn) {
     }
 
     // Redirect kembali ke halaman detail-ulasan.php
-    header("Location: detail-ulasan.php?id_wisata=$id_wisata");
+    // header("Location: detail-ulasan.php?id_wisata=$id_wisata");
+    echo '<script>window.location.href = "detail-ulasan.php";</script>';
+            exit();
 }
 // Cek apakah pengguna sudah mengonfirmasi penghapusan
 if (isset($_GET['confirm']) && $_GET['confirm'] == '1') {
