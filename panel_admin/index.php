@@ -132,7 +132,7 @@ $conn->close();
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
-                            <div class="stat-widget-two card-body">
+                            <div class="stat-widget-two card-body"a>
                                 <div class="stat-content">
                                     <div class="judul-text">Jumlah Data Kuliner</div>
                                     <div class="stat-digit"><?=$count4;?></div>
